@@ -1,0 +1,14 @@
+# .gitignore
+config.env
+
+.idea/
+.vscode/
+
+node_modules/
+build/
+
+*.log
+*.tmp
+
+*.config
+*.session
