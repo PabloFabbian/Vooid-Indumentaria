@@ -8,16 +8,16 @@
 }
 
 body{
-    background-color: #0b2b2b;
+    background-color: #253652;
 }
 
 /* Para navegadores Webkit (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 13px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #374151;
+    background-color: #575d68b4;
     border-radius: 999px;
 }
 
@@ -26,3 +26,7 @@ body{
 }
 
 /*------------------------------------------------*/
+
+.shadow-behind {
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+}
