@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 const cardData = [
-    { id: 1, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'Vooid Logo T-Shirt', price: '$16.00' },
-    { id: 2, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'Vooid Graphic T-Shirt', price: '$21.15' },
-    { id: 3, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'Vooid Pattern T-Shirt', price: '$12.00' },
-    { id: 4, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'The 400 Blows', price: '$18.40' },
-    { id: 5, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'The Catalyzer', price: '$16.00' },
-    { id: 6, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'Shooting Stars', price: '$21.15' },
-    { id: 7, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'Neptune', price: '$12.00' },
-    { id: 8, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'The 400 Blows', price: '$18.40' }
+    { id: 1, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'Vooid Logo T-Shirt', price: '$16.000' },
+    { id: 2, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Hoodie' ,title: 'Vooid Graphic T-Shirt', price: '$21.150' },
+    { id: 3, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'White' ,title: 'Vooid Pattern T-Shirt', price: '$12.000' },
+    { id: 4, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'The 400 Blows', price: '$18.400' },
+    { id: 5, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Red' ,title: 'The Catalyzer', price: '$16.000' },
+    { id: 6, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Cream' ,title: 'Shooting Stars', price: '$21.150' },
+    { id: 7, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Black' ,title: 'Neptune', price: '$12.000' },
+    { id: 8, imageUrl1: 'https://dummyimage.com/380x600/264653/fff', imageUrl2: 'https://dummyimage.com/380x600/458985/fff', type:'Drip' ,title: 'The 400 Blows', price: '$18.400' }
 ];
 
 function Ecommerce() {
@@ -27,18 +27,18 @@ function Ecommerce() {
             <div className="flex flex-col text-center w-full mb-4">
                 <p className="text-sm mb-5">Descubre</p>
                 <h1 className="sm:text-4xl text-2xl font-medium title-font mb-4 text-white">
-                    Tienda Vooid
+                — &nbsp;&nbsp;Shop&nbsp;&nbsp;  —
                 </h1>
                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                     Compra nuestra colección seleccionada de camisetas oversized únicas y con estilo.
                 </p>
             </div>
-            <div className="container px-36 py-12 mx-auto">
+            <div className="container px-36 py-12 -pb-12 mx-auto">
                 <div className="justify-center flex flex-wrap -m-4">
                     {cardData.map((card) => (
                         <div 
                             key={card.id} 
-                            className="lg:w-1/3 md:w-1/2 p-4 w-full mb-6"
+                            className="lg:w-1/3 md:w-1/2 p-4 w-full mb-6 cursor-pointer"
                             onMouseEnter={() => handleMouseEnter(card.id)}
                             onMouseLeave={handleMouseLeave}
                         >
@@ -58,7 +58,7 @@ function Ecommerce() {
                     ))}
                 </div>
                 <div className="mt-8 p-2 w-full">
-                    <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">View All</button>
+                    <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg transition duration-300 ease-in-out">View All</button>
                 </div>
             </div>
         </section>
