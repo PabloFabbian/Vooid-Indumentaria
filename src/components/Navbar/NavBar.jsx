@@ -15,13 +15,13 @@ function NavBar() {
                     <img src="/Logo2.webp" className="h-12" alt="Void Indum." />
                     <h1 className="ml-4">Indum.</h1>
                 </a>
-                <div className="lg:w-2/5 inline-flex justify-center lg:justify-end ml-1 lg:ml-0 mt-2">
+                <div className="lg:w-2/5 inline-flex justify-center lg:justify-end ml-3 sm:ml-8 lg:ml-0 mr-4 sm:mr-0 mt-6 sm:mt-0">
                     <img
                         src="/Cart.png"
-                        className="cursor-pointer h-7 mt-1 xl:mt-0 lg:mt-0 md:mt-0 transition duration-300"
+                        className="cursor-pointer h-7 mt-0 xl:mt-0 lg:mt-0 md:mt-0 transition duration-300"
                         alt="Carrito"
                     />
-                    <span id="carrito-count" className='bg-slate-100 text-teal-500 mt-1 md:mt-0 ml-1 mr-0 md:mr-20'>0</span>
+                    <span id="carrito-count" className='bg-slate-100 text-teal-500 md:mt-0 ml-1 mr-0 md:mr-20'>0</span>
                 </div>
             </div>
         </header>

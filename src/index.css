@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "transition-style";
+
 *{  padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -28,5 +30,17 @@ body{
 /*------------------------------------------------*/
 
 .shadow-behind {
-    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+    text-shadow: 4px 4px 6px rgba(3, 151, 170, 0.658);
 }
+
+.parallax-container {
+    position: relative;
+}
+
+.parallax-container > * {
+    position: relative;
+}
+
+.App {
+    position: relative;
+}  

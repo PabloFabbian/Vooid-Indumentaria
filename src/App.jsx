@@ -1,9 +1,9 @@
-import NavBar from './components/ANavbar/NavBar'
-import HeroHeaderSection from './components/BHeroHeaderSection/HeroHeaderSection'
-import Featured from './components/CFeatured/Featured'
-import Ecommerce from './components/DEcommerce/Ecommerce'
-import MyFooter from './components/FFooter/MyFooter'
-import ContactInfo from './components/EContactInfo/ContactInfo'
+import NavBar from './components/Navbar/NavBar'
+import HeroHeaderSection from './components/HeroHeaderSection/HeroHeaderSection'
+import Featured from './components/Featured/Featured'
+import Ecommerce from './components/ShopSection/ShopSection'
+import MyFooter from './components/Footer/MyFooter'
+import ContactInfo from './components/ContactInfo/ContactInfo'
 
 function App() {
   return (

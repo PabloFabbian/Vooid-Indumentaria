@@ -1,4 +1,5 @@
 import React from 'react';
+import './transition.css';
 
 const cardData = [
     { imageUrl: 'Card1.webp', title: 'Materiales de calidad confort duradero.', description: 'Nuestras remeras comodas y duraderas, con materiales premium.' },
@@ -22,10 +23,10 @@ function Featured() {
                 </div>
                 <div className="flex flex-wrap -m-4 text-center justify-center">
                     {cardData.map((card, index) => (
-                        <div key={index} className="p-4 md:w-1/4 sm:w-1/2 w-full">
-                            <div className="px-2 py-3">
+                        <div key={index} className="p-4 w-full md:w-1/4 sm:w-1/2 w-full transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                            <div className="px-5 py-3">
                                 <img src={card.imageUrl} alt={`Imagen ${index + 1}`} className="mb-6 inline-block rounded-lg" />
-                                <h2 className="title-font font-medium text-2xl text-white mb-4">{card.title}</h2>
+                                <h2 className="title-font font-medium text-xl md:text-2xl text-white mb-4">{card.title}</h2>
                                 <p className="leading-relaxed">{card.description}</p>
                             </div>
                         </div>
