@@ -3,8 +3,7 @@ import './transition.css';
 
 const cardData = [
     { imageUrl: 'Card1.webp', title: 'Materiales de calidad confort duradero.', description: 'Nuestras remeras comodas y duraderas, con materiales premium.' },
-    { imageUrl: 'Card2.webp', title: 'Tonos brillantes que muestran tu estilo.', description: 'Elige entre amplia gama de colores vivos para tu personalidad única.' },
-    { imageUrl: 'Card3.webp', title: 'Opciones de impresión para todo estilo.', description: 'Explora la variedad de colores vibrantes para reflejar tu estilo único.' }
+    { imageUrl: 'Card2.webp', title: 'Tonos brillantes que muestran tu estilo.', description: 'Elige entre amplia gama de colores vivos para tu personalidad única.' }
 ];
 
 function Featured() {
