@@ -2,15 +2,15 @@ import './NavBar.css';
 
 function NavBar() {
     return (
-        <header className="text-gray-400 bg-stone-100 body-font static">
+        <header className="text-gray-400 bg-black body-font static">
             <div className="ml-0 md:ml-10 mx-auto flex flex-wrap p-3 items-center justify-center">
-                <nav className="flex-nowrap lg:w-2/5 items-center text-s md:ml-auto text-stone-900">
+                <nav className="flex-nowrap lg:w-2/5 items-center text-s md:ml-auto text-stone-100">
                     <a className="mr-8 cursor-pointer hover:text-teal-500 transition duration-200">Inicio</a>
                     <a className="mr-8 cursor-pointer hover:text-teal-500 transition duration-200">Shop</a>
                     <a className="mr-8 cursor-pointer hover:text-teal-500 transition duration-200">Cómo comprar</a>
                     <a className="mr-0 cursor-pointer hover:text-teal-500 transition duration-200">Quiénes somos</a>
                 </nav>
-                <a className="flex justify-center items-center order-first lg:order-none lg:w-1/5 title-font font-medium text-stone-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+                <a className="flex justify-center items-center order-first lg:order-none lg:w-1/5 title-font font-medium text-stone-100 lg:items-center lg:justify-center mb-4 md:mb-0">
                     <h1 className="mr-4">Vooid</h1>
                     <img src="/Logo2.webp" className="h-12" alt="Void Indum." />
                     <h1 className="ml-4">Indum.</h1>
