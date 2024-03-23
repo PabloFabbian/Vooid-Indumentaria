@@ -35,7 +35,7 @@ function Ecommerce() {
                     {cardData.map((card) => (
                         <div
                             key={card.id}
-                            className="lg:w-1/3 md:w-1/2 w-1/2 p-4 w-full mb-6 cursor-pointer relative"
+                            className="lg:w-1/3 md:w-1/2 w-1/2 p-2 md:p-4 mb-6 cursor-pointer relative"
                             onMouseEnter={() => handleCardHover(card.id)}
                             onMouseLeave={() => handleCardHover(null)}
                         >

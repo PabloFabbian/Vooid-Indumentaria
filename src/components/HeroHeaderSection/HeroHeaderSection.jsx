@@ -22,12 +22,12 @@ const HeroHeaderSection = () => {
     return (
         <div className="bg-cover bg-center h-screen flex items-center filter relative opacity-90" style={{backgroundImage: "url('Plainbg.webp')"}}>
             <div ref={parallaxRef} className="container mx-auto px-4">
-                <div className="flex flex-col items-center text-center md:full mt-30 lg:-mt-24 md:ml-0 md:items-center md:text-center mb-16 md:mb-0">
-                    <h1 className="animate__animated animate__fadeInDown shadow-behind mb-4 font-bold text-zinc-200 leading-tight text-6xl mb-20">
+                <div className="flex flex-col items-center text-center md:full -mt-28 lg:-mt-36 md:ml-0 md:items-center md:text-center mb-16 md:mb-0">
+                    <h1 className="animate__animated animate__fadeInDown shadow-behind font-bold text-zinc-200 leading-tight lg:text-6xl text-5xl mb-20">
                         Descubrí los Últimos Diseños de
                         <br />Indumentaria Oversize
                     </h1>
-                    <p className="animate__animated animate__fadeIn animate__delay-1s mt-48 mb-8 leading-relaxed text-zinc-200 text-pretty">
+                    <p className="animate__animated animate__fadeIn animate__delay-1s mt-60 lg:mt-80 mb-8 leading-relaxed text-zinc-200 text-pretty">
                         Compra ahora diseños exclusivos o personalizados que te hagan único.
                         <br className="hidden lg:inline-block"/>Calidad, color y estampados que se ajustan a tu estilo.
                     </p>

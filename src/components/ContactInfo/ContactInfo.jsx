@@ -15,8 +15,8 @@ function ContactInfo() {
                         <div key={index} className="p-4 md:w-1/4 sm:w-1/2 w-full">
                             <div className="px-4 py-3 rounded-lg">
                                 <img src={item.icon} className="w-12 h-12 mb-6 inline-block" />
-                                <h2 className="title-font font-medium text-3xl text-white mb-4">{item.title}</h2>
-                                <p className="mb-2">{item.text}</p>
+                                <h2 className="title-font font-medium text-2xl md:text-3xl text-white mb-4">{item.title}</h2>
+                                <p className="mb-2 text-sm md:text-base">{item.text}</p>
                                 <p className="leading-relaxed text-slate-300">{item.info}</p>
                             </div>
                         </div>
