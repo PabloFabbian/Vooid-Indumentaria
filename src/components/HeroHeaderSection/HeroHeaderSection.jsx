@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import 'animate.css';
+import '../../index.css';
 
 const HeroHeaderSection = () => {
     const parallaxRef = useRef(null);
@@ -20,18 +21,18 @@ const HeroHeaderSection = () => {
     }, []);
 
     return (
-        <div className="bg-cover bg-center h-screen flex items-center filter relative opacity-90" style={{backgroundImage: "url('Plainbg.webp')"}}>
+        <div className="bg-cover bg-center h-screen flex items-center filter relative" style={{backgroundImage: "url('Plainbg.webp')"}}>
             <div ref={parallaxRef} className="container mx-auto px-4">
-                <div className="flex flex-col items-center text-center md:full -mt-28 lg:-mt-36 md:ml-0 md:items-center md:text-center mb-16 md:mb-0">
-                    <h1 className="animate__animated animate__fadeInDown shadow-behind font-bold text-zinc-200 leading-tight lg:text-6xl text-5xl mb-20">
+                <div className="flex flex-col items-center text-center md:full -mt-60 lg:-mt-44 md:ml-0 md:items-center md:text-center mb-16 md:mb-0">
+                    <h1 className="animate__animated animate__fadeInDown shadow-behind font-bold text-zinc-200 leading-tight lg:text-6xl text-4xl text-pretty pt-20">
                         Descubrí los Últimos Diseños de
                         <br />Indumentaria Oversize
                     </h1>
-                    <p className="animate__animated animate__fadeIn animate__delay-1s mt-60 lg:mt-80 mb-8 leading-relaxed text-zinc-200 text-pretty">
+                    <p className="animate__animated animate__fadeIn animate__delay-1s mt-4 lg:mt-96 mb-16 leading-relaxed text-zinc-200 text-pretty">
                         Compra ahora diseños exclusivos o personalizados que te hagan único.
                         <br className="hidden lg:inline-block"/>Calidad, color y estampados que se ajustan a tu estilo.
                     </p>
-                    <div className="animate__animated animate__fadeIn animate__delay-2s flex justify-center">
+                    <div className="animate__animated animate__fadeIn animate__delay-2s flex justify-center lg:-mt-6 mt-64">
                         <button className="inline-flex text-white bg-indigo-500 hover:bg-indigo-600 border-0 py-2 px-6 focus:outline-none rounded text-lg transition duration-300 ease-in-out">Shop</button>
                         <button className="inline-flex text-indigo-500 bg-white hover:bg-slate-300 border-0 py-2 px-6 focus:outline-none rounded text-lg transition duration-300 ease-in-out ml-4">Learn More</button>
                     </div>

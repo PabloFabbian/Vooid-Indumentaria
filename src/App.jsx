@@ -1,21 +1,19 @@
-import NavBar from './components/Navbar/NavBar'
-import HeroHeaderSection from './components/HeroHeaderSection/HeroHeaderSection'
-import Featured from './components/Featured/Featured'
-import Ecommerce from './components/ShopSection/ShopSection'
-import MyFooter from './components/Footer/MyFooter'
-import ContactInfo from './components/ContactInfo/ContactInfo'
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import NavBar from './components/Navbar/NavBar';
+import MyFooter from './components/Footer/MyFooter';
 
 function App() {
-  return (
-    <div className="App">
-      <NavBar></NavBar>
-      <HeroHeaderSection></HeroHeaderSection>
-      <Featured></Featured>
-      <Ecommerce></Ecommerce>
-      <ContactInfo></ContactInfo>
-      <MyFooter></MyFooter>
-    </div>
-  )
+    return (
+        <BrowserRouter>
+            <NavBar />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                </Routes>
+            <MyFooter />
+        </BrowserRouter>
+    );
 }
 
-export default App
+export default App;
