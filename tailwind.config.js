@@ -91,6 +91,7 @@ module.exports = {
         }),
       });
     }),
-    require("tailwindcss-animate")
+    require("tailwindcss-animate"),
+    require("daisyui")
   ],
 }

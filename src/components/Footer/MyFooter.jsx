@@ -2,7 +2,7 @@ import React from 'react'
 
 function MyFooter() {
     return (
-        <footer className="text-gray-400 bg-gray-800 body-font">
+        <footer className="text-gray-400 bg-black body-font">
             <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
                 <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
                     <img src="/Logo2.webp" className="w-16 h-16 text-white p-2 rounded-full" alt="Void Indum." />

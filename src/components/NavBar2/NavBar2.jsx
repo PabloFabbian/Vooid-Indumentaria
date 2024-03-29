@@ -13,7 +13,7 @@ const NavigationMenuDemo = () => {
                     aria-hidden
                 />
             </NavigationMenu.Trigger>
-            <NavigationMenu.Content style={{ outline: 'none' }} className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
+            <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
                 <ul className="one m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr] bg-black">
                     <li className="row-span-3 grid duration-300 hover:scale-105">
                         <NavigationMenu.Link asChild>
@@ -32,14 +32,14 @@ const NavigationMenuDemo = () => {
                             </a>
                         </NavigationMenu.Link>
                     </li>
-                    <ListItem href="#" title="Stitches">
-                        CSS-in-JS with best-in-class developer experience.
+                    <ListItem href="#" title="Como Comprar">
+                        Explora el cómo realizar compras rápidas y seguras aquí.
                     </ListItem>
-                    <ListItem href="#" title="Colors">
-                        Beautiful, thought-out palettes with auto dark mode.
+                    <ListItem href="#" title="Guía de Talles">
+                        Conoce nuestra guía para encontrar tus medidas ideales.
                     </ListItem>
-                    <ListItem href="#" title="Icons">
-                        A crisp set of 15x15 icons, balanced and consistent.
+                    <ListItem href="#" title="Preguntas Frecuentes">
+                        Encuentra soluciones a preguntas frecuentes sobre nuestros productos.
                     </ListItem>
                 </ul>
             </NavigationMenu.Content>
@@ -52,14 +52,14 @@ const ListItem = React.forwardRef(({ className, children, title, ...props }, for
         <NavigationMenu.Link asChild>
             <a
                 className={classNames(
-                    'focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors',
+                    'focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:bg-neutral-800 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors',
                     className
                 )}
                 {...props}
                 ref={forwardedRef}
             >
-                <div className="text-violet12 mb-[5px] font-medium leading-[1.2]">{title}</div>
-                <p className="text-mauve11 leading-[1.4]">{children}</p>
+                <div className="text-teal-500 mb-[5px] font-medium leading-[1.2]">{title}</div>
+                <p className="text-stone-200 leading-[1.4]">{children}</p>
             </a>
         </NavigationMenu.Link>
     </li>
