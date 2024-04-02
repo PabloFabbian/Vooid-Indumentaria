@@ -44,3 +44,10 @@ body{
 .App {
     position: relative;
 }
+
+/*------------------------------------------------*/
+
+.animate-enterFromLeft,
+.animate-enterFromRight {
+    background-color: black;
+}

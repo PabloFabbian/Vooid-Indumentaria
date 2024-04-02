@@ -14,7 +14,7 @@ const products = [
 
 function VooidShop() {
     return (
-        <section className='bg-slate-900'>
+        <section className='bg-slate-900 mt-16'>
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <header className='flex justify-between items-center'>
                     <div>

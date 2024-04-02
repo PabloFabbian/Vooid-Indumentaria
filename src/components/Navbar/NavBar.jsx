@@ -1,16 +1,15 @@
 import './NavBar.css';
 import React from 'react';
-import NavigationMenuDemo from '../../components/NavBar2/NavBar2';
+import DropdownMenus from '../../components/NavBar2/NavBar2';
 import { NavigationMenu } from "@/components/ui/navigation-menu";
 
 function NavBar() {
     return (
-        <header className="text-gray-400 bg-black body-font static">
+        <header className="text-gray-400 bg-black body-font fixed top-0 w-full z-10">
             <div className="flex flex-wrap ml-0 mx-auto p-3 items-center justify-center md:justify-between md:px-28">
                 <NavigationMenu className="order-3 lg:order-1 lg:w-1/4 flex md:justify-left items-center text-s md:ml-auto text-stone-100 mb-3 lg:ml-0 md:mb-0">
                     <a className="mr-6 cursor-pointer hover:text-teal-500 transition duration-200">Inicio</a>
-                    <NavigationMenuDemo />
-                    <a className="mr-8 cursor-pointer hover:text-teal-500 transition duration-200">Quiénes somos</a>
+                    <DropdownMenus />
                     <a className="mr-8 cursor-pointer hover:text-teal-500 transition duration-200">Contacto</a>
                 </NavigationMenu>
 

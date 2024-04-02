@@ -28,14 +28,6 @@ module.exports = {
         ...indigo,
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
         enterFromRight: {
           from: { opacity: '0', transform: 'translateX(200px)' },
           to: { opacity: '1', transform: 'translateX(0)' },
@@ -70,8 +62,6 @@ module.exports = {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
         scaleIn: 'scaleIn 200ms ease',
         scaleOut: 'scaleOut 200ms ease',
         fadeIn: 'fadeIn 200ms ease',
