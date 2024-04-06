@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { CaretDownIcon } from '@radix-ui/react-icons';
 import classNames from 'classnames';
@@ -8,6 +9,7 @@ const DropdownMenus = () => {
     const [isAboutOpen, setAboutOpen] = useState(false);
     const shopTimerRef = useRef(null);
     const aboutTimerRef = useRef(null);
+    const navigate = useNavigate();
 
     const handleShopPointerEnter = () => {
         clearTimeout(shopTimerRef.current);
@@ -54,21 +56,18 @@ const DropdownMenus = () => {
                         onPointerLeave={handleShopPointerLeave}
                     >
                         <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr] bg-black">
-                            <li className="row-span-3 grid duration-300 hover:scale-105">
-                                <NavigationMenu.Link asChild>
-                                    <a
-                                        className="focus:shadow-violet7 from-black to-indigo9 flex h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none text-white"
-                                        href="/"
-                                    >
-                                        <img src='./Logo3.webp' className='w-70' alt="Logo" />
-                                        <div className="mt-4 mb-[7px] text-[18px] font-medium leading-[1.2] dark:text-white text-center">
-                                            Vooid Shop  
-                                        </div>
-                                        <p className="text-mauve4 text-[14px] leading-[1.3] dark:text-gray-400 text-center">
-                                            Estilo único para cada ocasión.
-                                        </p>
-                                    </a>
-                                </NavigationMenu.Link>
+                            <li className="row-span-3 grid duration-300 hover:scale-105 hover:cursor-pointer">
+                                <a
+                                    className="focus:shadow-violet7 from-black to-indigo9 flex h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none text-white"
+                                    onClick={() => navigate('/vooidshop')}> {/* Corregido */}
+                                    <img src='./Logo3.webp' className='w-70' alt="Logo" /> {/* Asegúrate de que la ruta de la imagen sea correcta */}
+                                    <div className="mt-4 mb-[7px] text-[18px] font-medium leading-[1.2] dark:text-white text-center">
+                                        Vooid Shop
+                                    </div>
+                                    <p className="text-mauve4 text-[14px] leading-[1.3] dark:text-gray-400 text-center">
+                                        Estilo único para cada ocasión.
+                                    </p>
+                                </a>
                             </li>
                             <ListItem href="#" title="Como Comprar">
                                 Explora el cómo realizar compras rápidas y seguras aquí.
@@ -83,7 +82,7 @@ const DropdownMenus = () => {
                     </NavigationMenu.Content>
                 )}
             </NavigationMenu.Item>
-
+                        
             <NavigationMenu.Item className="mr-4 transition duration-200" style={{ listStyleType: 'none' }}>
                 <NavigationMenu.Trigger
                     className="text-white hover:text-teal-500 group flex select-none items-center justify-between px-3 py-2 leading-none outline-none"

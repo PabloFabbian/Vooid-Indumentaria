@@ -11,8 +11,8 @@ function App() {
         <BrowserRouter>
             <NavBar />
                 <Routes>
-                    <Route path="*" element={<HomePage />} />
-                    <Route path="/" element={<VooidShop />} />
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="*" element={<VooidShop />} />
                 </Routes>
             <Whatsapp />
             <MyFooter />
