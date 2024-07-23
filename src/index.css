@@ -27,6 +27,20 @@ body{
     background-color: #575d68;
 }
 
+/* Ocultar el scrollbar en dispositivos móviles pero permitir desplazamiento */
+@media (max-width: 768px) { /* Puedes ajustar el ancho según tus necesidades */
+    /* Para navegadores Webkit */
+    ::-webkit-scrollbar {
+        width: 0; /* Esto oculta el scrollbar visualmente */
+    }
+    
+    /* Para otros navegadores */
+    body {
+        scrollbar-width: none; /* Esto oculta el scrollbar en navegadores como Firefox */
+        -ms-overflow-style: none; /* Esto oculta el scrollbar en Internet Explorer y Edge */
+    }
+}
+
 /*------------------------------------------------*/
 
 .shadow-behind {

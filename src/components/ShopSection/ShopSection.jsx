@@ -61,7 +61,7 @@ function Ecommerce() {
                     ))}
                 </div>
                 <div className="mt-8 p-2 w-full">
-                    <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg transition duration-300 ease-in-out">View All</button>
+                    <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg transition duration-300 ease-in-out">Ver Todos</button>
                 </div>
             </div>
         </section>
