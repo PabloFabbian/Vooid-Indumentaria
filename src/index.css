@@ -4,64 +4,66 @@
 
 @import "transition-style";
 
-*{  padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #253652;
+body {
+  background-color: #253652;
 }
 
 /* Para navegadores Webkit (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
-    width: 13px;
+  width: 13px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #575d68b4;
-    border-radius: 999px;
+  background-color: #575d68b4;
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #575d68;
+  background-color: #575d68;
 }
 
 /* Ocultar el scrollbar en dispositivos móviles pero permitir desplazamiento */
-@media (max-width: 768px) { /* Puedes ajustar el ancho según tus necesidades */
-    /* Para navegadores Webkit */
-    ::-webkit-scrollbar {
-        width: 0; /* Esto oculta el scrollbar visualmente */
-    }
-    
-    /* Para otros navegadores */
-    body {
-        scrollbar-width: none; /* Esto oculta el scrollbar en navegadores como Firefox */
-        -ms-overflow-style: none; /* Esto oculta el scrollbar en Internet Explorer y Edge */
-    }
+@media (max-width: 768px) {
+  /* Puedes ajustar el ancho según tus necesidades */
+  /* Para navegadores Webkit */
+  ::-webkit-scrollbar {
+    width: 0; /* Esto oculta el scrollbar visualmente */
+  }
+
+  /* Para otros navegadores */
+  body {
+    scrollbar-width: none; /* Esto oculta el scrollbar en navegadores como Firefox */
+    -ms-overflow-style: none; /* Esto oculta el scrollbar en Internet Explorer y Edge */
+  }
 }
 
 /*------------------------------------------------*/
 
 .shadow-behind {
-    text-shadow: 4px 4px 6px rgba(3, 151, 170, 0.658);
+  text-shadow: 4px 4px 6px rgba(3, 151, 170, 0.658);
 }
 
 .parallax-container {
-    position: relative;
+  position: relative;
 }
 
 .parallax-container > * {
-    position: relative;
+  position: relative;
 }
 
 .App {
-    position: relative;
+  position: relative;
 }
 
 /*------------------------------------------------*/
 
 .animate-enterFromLeft,
 .animate-enterFromRight {
-    background-color: black;
+  background-color: black;
 }
