@@ -1,5 +1,4 @@
 import React from "react";
-import ReviewCarousel from "../../components/ReviewCarousel/ReviewCarousel";
 import Card from "../../components/Card/Card";
 import "./transition.css";
 
@@ -43,9 +42,6 @@ function Featured() {
               description={card.description}
             />
           ))}
-        </div>
-        <div className="flex justify-center">
-          <ReviewCarousel />
         </div>
       </div>
     </section>

@@ -13,10 +13,6 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.bg-black {
-  background-color: black;
-}
-
 .bg-opacity-80 {
   background-color: rgba(0, 0, 0, 0.8);
 }

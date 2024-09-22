@@ -1,8 +1,9 @@
-import "./NavBar.css";
+import "./navbar.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import DropdownMenus from "../NavBar2/NavBar2";
 import { NavigationMenu } from "@/components/ui/navigation-menu";
+import ShopDropdown from "./ShopDropdown"
+import AboutDropdown from "./AboutDropdown"
 
 function NavBar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,19 +16,19 @@ function NavBar() {
     <header className="body-font fixed top-0 z-10 w-full bg-black py-2 text-gray-400">
       <div className="relative flex h-16 items-center justify-between px-3 py-3">
         {/* Desktop Navigation */}
-        <div className="relative hidden w-full items-center lg:flex">
-          <div className="absolute left-0 flex items-center space-x-6">
-            <NavigationMenu className="ml-6 flex items-center text-stone-100">
+        <div className="relative hidden w-full items-center md:flex">
+          <div className="absolute left-0 flex items-center">
+            <NavigationMenu className="ml-6 flex items-center text-stone-100 space-x-10">
               <Link
                 to="/"
                 className="mr-4 cursor-pointer transition duration-200 hover:text-teal-500"
               >
                 Inicio
               </Link>
-              <DropdownMenus />
               <Link className="cursor-pointer transition duration-200 hover:text-teal-500">
                 Contacto
               </Link>
+              <AboutDropdown />
             </NavigationMenu>
           </div>
 
@@ -39,23 +40,26 @@ function NavBar() {
             </a>
           </div>
 
-          <div className="absolute right-0 mr-6 flex items-center space-x-2">
-            <img
-              src="/Cart.png"
-              className="h-7 cursor-pointer transition duration-300"
-              alt="Carrito"
-            />
-            <span
-              id="carrito-count"
-              className="ml-2 bg-stone-800 text-teal-500"
-            >
-              0
-            </span>
+          <div className="absolute right-0 mr-6 flex items-center space-x-6">
+            <ShopDropdown />
+            <div className="flex flex-nowrap">
+              <img
+                src="/Cart.png"
+                className="h-7 cursor-pointer transition duration-300"
+                alt="Carrito"
+              />
+              <span
+                id="carrito-count"
+                className="ml-2 bg-stone-800 text-teal-500"
+              >
+                0
+              </span>
+            </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        <div className="flex w-full items-center justify-between lg:hidden">
+        <div className="flex w-full items-center justify-between md:hidden">
           <button onClick={toggleMobileMenu} className="text-white">
             <svg
               className="h-6 w-6"
@@ -127,7 +131,6 @@ function NavBar() {
             >
               Inicio
             </Link>
-            <DropdownMenus />
             <Link
               className="block px-4 py-2 text-xl hover:text-teal-500"
               onClick={() => setMobileMenuOpen(false)}
