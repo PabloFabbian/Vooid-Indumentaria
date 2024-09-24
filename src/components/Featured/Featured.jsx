@@ -1,47 +1,47 @@
 import React from "react";
-import Card from "../../components/Card/Card";
-import "./transition.css";
-
-const cardData = [
-  {
-    imageUrl: "Card1.webp",
-    title: "Materiales de calidad, confort duradero.",
-    description:
-      "Nuestras remeras son cómodas y duraderas, hechas con materiales premium.",
-  },
-  {
-    imageUrl: "Card2.webp",
-    title: "Los tonos brillantes que muestran tu estilo.",
-    description:
-      "Podes elegir entre una amplia gama de colores vivos para tu personalidad única.",
-  },
-];
 
 function Featured() {
   return (
-    <section className="body-font bg-gray-900 text-gray-400">
+    <section className="bg-gradient-to-b from-[#A79EAC] to-[#4A354A] body-font bg-gray-900 text-gray-400">
       <div className="container mx-auto px-5 pb-0 pt-12  md:py-12">
-        <div className="mb-10 flex w-full flex-col text-center">
-          <p className="mb-5 text-sm">Único</p>
-          <h1 className="title-font mb-4 text-2xl font-medium text-white sm:text-4xl">
-            — Descubrí Calidad y Variedad en la&nbsp; —<br /> Indumentaria Vooid
+        <div className="mb-14 flex w-full flex-col text-center">
+          <p className="mb-2 text-lg">Único</p>
+          <h1 className="mb-4 text-6xl font-bold tracking-wide text-white">
+            — Calidad y Variedad en la —<br /> Indumentaria Vooid
           </h1>
-          <p className="mx-auto text-base leading-relaxed lg:w-2/3">
+          <p className="mx-auto text-base leading-relaxed">
             En Vooid, ofrecemos una amplia gama de remeras de alta calidad en
             varios colores e impresiones.
             <br />
             Encuentra el diseño perfecto para tu estilo único.
           </p>
         </div>
-        <div className="flex justify-center text-center md:-m-4 md:pb-8">
-          {cardData.map((card, index) => (
-            <Card
-              key={index}
-              imageUrl={card.imageUrl}
-              title={card.title}
-              description={card.description}
-            />
-          ))}
+        <div className="flex gap-20">
+            {/* Mitad izquierda: Video */}
+            <div className="w-1/2 flex items-center justify-center">
+                <video
+                    className="w-full h-auto border border-white"
+                    controls
+                    src="/clothing-video.mp4"
+                >
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+            </div>
+
+            {/* Mitad derecha: Secciones */}
+            <div className="w-1/2 flex flex-col">
+              {/* Primera sección */}
+              <div className="flex-1 border-b border-gray-300">
+                <h2 className="text-[2.6rem] font-bold leading-[3.2rem]">Materiales de calidad y confort duradero.</h2>
+                <p className="text-lg mt-2">Nuestras remeras son cómodas y duraderas, hechas con materiales premium.</p>
+              </div>
+                
+              {/* Segunda sección */}
+              <div className="flex-1 flex flex-col justify-end items-end">
+                <h2 className="text-[2.6rem] font-bold text-right leading-[3.2rem]">Los tonos brillantes que muestran tu estilo.</h2>
+                <p className="text-lg mt-2">Podes elegir entre una amplia gama de colores vivos para tu personalidad.</p>
+              </div>
+            </div>
         </div>
       </div>
     </section>
