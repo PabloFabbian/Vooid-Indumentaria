@@ -1,8 +1,8 @@
 import HeroSection from "./HeroSection/HeroSection";
 import Testimonials from "./Testimonials/Testimonials";
 import Featured from "./Featured/Featured";
-import Ecommerce from "./ShopSection/ShopSection";
 import ContactInfo from "./ContactInfo/ContactInfo";
+import VooidShop from "./VooidShop/VooidShop";
 
 function HomePage() {
   return (
@@ -10,7 +10,7 @@ function HomePage() {
       <HeroSection />
       <Testimonials />
       <Featured />
-      <Ecommerce />
+      <VooidShop />
       <ContactInfo />
     </div>
   );

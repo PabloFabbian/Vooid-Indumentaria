@@ -76,7 +76,7 @@ function Ecommerce() {
   };
 
   return (
-    <section className="body-font bg-gray-900 text-gray-400">
+    <section className="bg-gradient-to-b from-[#4A354A] to-[#110911] body-font bg-gray-900 text-gray-400">
       <div className="mb-4 flex w-full flex-col text-center">
         <p className="mb-5 text-sm">Descubre</p>
         <h1 className="title-font mb-4 text-2xl font-medium text-white sm:text-4xl">

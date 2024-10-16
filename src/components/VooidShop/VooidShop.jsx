@@ -1,82 +1,20 @@
 import React from "react";
 
 const products = [
-  {
-    id: 1,
-    image: "./Design1.webp",
-    image2: "https://dummyimage.com/380x600/264653/fff",
-    type: "Black",
-    name: "Vooid Logo T-Shirt",
-    price: "$16.000",
-  },
-  {
-    id: 2,
-    image: "./Design2.webp",
-    image2: "https://dummyimage.com/380x600/264653/fff",
-    type: "Hoodie",
-    name: "Vooid Graphic T-Shirt",
-    price: "$21.150",
-  },
-  {
-    id: 3,
-    image: "./Design3.webp",
-    image2: "https://dummyimage.com/380x600/264653/fff",
-    type: "White",
-    name: "Vooid Pattern T-Shirt",
-    price: "$12.000",
-  },
-  {
-    id: 4,
-    image: "./Design2.webp",
-    image2: "https://dummyimage.com/380x600/264653/fff",
-    type: "Black",
-    name: "The 400 Blows",
-    price: "$18.400",
-  },
-  {
-    id: 5,
-    image: "./Design3.webp",
-    image2: "https://dummyimage.com/380x600/264653/fff",
-    type: "Red",
-    name: "The Catalyzer",
-    price: "$16.000",
-  },
-  {
-    id: 6,
-    image: "./Design1.webp",
-    image2: "https://dummyimage.com/380x600/264653/fff",
-    type: "Cream",
-    name: "Shooting Stars",
-    price: "$21.150",
-  },
-  {
-    id: 7,
-    image: "./Design1.webp",
-    image2: "https://dummyimage.com/380x600/264653/fff",
-    type: "Black",
-    name: "Neptune",
-    price: "$12.000",
-  },
-  {
-    id: 8,
-    image: "./Design1.webp",
-    image2: "https://dummyimage.com/380x600/264653/fff",
-    type: "Drip",
-    name: "The 400 Blows",
-    price: "$18.400",
-  },
-  {
-    id: 9,
-    name: "Basic Tee",
-    price: "$16.500",
-    image:
-      "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-  },
+  { id: 1, image: "./Design1.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "Vooid Logo T-Shirt", price: "$16.000" },
+  { id: 2, image: "./Design2.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Hoodie", name: "Vooid Graphic T-Shirt", price: "$21.150" },
+  { id: 3, image: "./Design3.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "White", name: "Vooid Pattern T-Shirt", price: "$12.000" },
+  { id: 4, image: "./Design2.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "The 400 Blows", price: "$18.400" },
+  { id: 5, image: "./Design3.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Red", name: "The Catalyzer", price: "$16.000" },
+  { id: 6, image: "./Design1.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Cream", name: "Shooting Stars", price: "$21.150" },
+  { id: 7, image: "./Design1.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "Neptune", price: "$12.000" },
+  { id: 8, image: "./Design1.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Drip", name: "The 400 Blows", price: "$18.400" },
+  { id: 9, name: "Basic Tee", price: "$16.500", image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" },
 ];
 
 function VooidShop() {
   return (
-    <section className="mt-16 bg-slate-900">
+    <section className="pt-16 bg-slate-900">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <header className="flex items-center justify-between">
           <div>
