@@ -6,7 +6,7 @@ function Featured() {
       <div className="container mx-auto px-5 pb-0 pt-12  md:py-12">
         <div className="mb-14 flex w-full flex-col text-center">
           <p className="mb-2 text-lg text-cyan-200">Único</p>
-          <h1 className="mb-4 text-6xl font-bold tracking-wide text-cyan-50">
+          <h1 className="mb-4 text-5xl font-bold tracking-wide text-cyan-50">
             — Calidad y Variedad en la —<br /> Indumentaria Vooid
           </h1>
           <p className="mx-auto text-base leading-relaxed text-cyan-200">
@@ -22,7 +22,7 @@ function Featured() {
                 href="https://www.instagram.com/vooid.indumentaria/?hl=es-la" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-1/2 flex items-center justify-center relative group hover:cursor-pointer"
+                className="w-5/12 flex items-center justify-center relative group hover:cursor-pointer"
             >
                 <video
                     className="w-full h-auto border border-white"
@@ -50,13 +50,13 @@ function Featured() {
             <div className="w-1/2 flex flex-col">
               {/* Primera sección */}
               <div className="flex-1 border-b border-cyan-200">
-                <h2 className="text-[2.6rem] text-cyan-50 font-bold leading-[3.2rem]">Materiales de calidad y confort duradero.</h2>
+                <h2 className="text-[2.3rem] text-cyan-50 font-bold leading-[3.2rem]">Materiales de calidad y confort duradero.</h2>
                 <p className="text-lg mt-2 text-cyan-200">Nuestras remeras son cómodas y duraderas, hechas con materiales premium.</p>
               </div>
                 
               {/* Segunda sección */}
               <div className="flex-1 flex flex-col justify-end items-end">
-                <h2 className="text-[2.6rem] text-cyan-50 font-bold text-right leading-[3.2rem]">Los tonos brillantes que muestran tu estilo.</h2>
+                <h2 className="text-[2.3rem] text-cyan-50 font-bold text-right leading-[3.2rem]">Los tonos brillantes que muestran tu estilo.</h2>
                 <p className="text-lg mt-2 text-cyan-200">Podes elegir entre una amplia gama de colores vivos para tu personalidad.</p>
               </div>
             </div>

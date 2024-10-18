@@ -1,34 +1,34 @@
 import React from "react";
 
 const products = [
-  { id: 1, image: "./Design1.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "Vooid Logo T-Shirt", price: "$16.000" },
-  { id: 2, image: "./Design2.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Hoodie", name: "Vooid Graphic T-Shirt", price: "$21.150" },
-  { id: 3, image: "./Design3.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "White", name: "Vooid Pattern T-Shirt", price: "$12.000" },
-  { id: 4, image: "./Design2.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "The 400 Blows", price: "$18.400" },
-  { id: 5, image: "./Design3.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Red", name: "The Catalyzer", price: "$16.000" },
-  { id: 6, image: "./Design1.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Cream", name: "Shooting Stars", price: "$21.150" },
-  { id: 7, image: "./Design1.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "Neptune", price: "$12.000" },
-  { id: 8, image: "./Design1.webp", image2: "https://dummyimage.com/380x600/264653/fff", type: "Drip", name: "The 400 Blows", price: "$18.400" },
-  { id: 9, name: "Basic Tee", price: "$16.500", image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" },
+  { id: 1, image: "./Design4.png", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "Vooid Logo T-Shirt", price: "$16.000" },
+  { id: 2, image: "./Design5.png", image2: "https://dummyimage.com/380x600/264653/fff", type: "Hoodie", name: "Vooid Graphic T-Shirt", price: "$21.150" },
+  { id: 3, image: "./Design6.png", image2: "https://dummyimage.com/380x600/264653/fff", type: "White", name: "Vooid Pattern T-Shirt", price: "$12.000" },
+  { id: 4, image: "./Design7.png", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "The 400 Blows", price: "$18.400" },
+  { id: 5, image: "./Design8.png", image2: "https://dummyimage.com/380x600/264653/fff", type: "Red", name: "The Catalyzer", price: "$16.000" },
+  { id: 6, image: "./Design9.png", image2: "https://dummyimage.com/380x600/264653/fff", type: "Cream", name: "Shooting Stars", price: "$21.150" },
+  { id: 7, image: "./Design1.png", image2: "https://dummyimage.com/380x600/264653/fff", type: "Black", name: "Neptune", price: "$12.000" },
+  { id: 8, image: "./Design2.png", image2: "https://dummyimage.com/380x600/264653/fff", type: "Drip", name: "The 400 Blows", price: "$18.400" },
+  { id: 9, name: "Basic Tee", price: "$16.500", image: "./Design3.png" },
 ];
 
 function VooidShop() {
   return (
-    <section className="pt-16 bg-slate-900">
+    <section className="pt-6 bg-gradient-to-b from-[#4A354A] to-[#110911]">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <header className="flex items-center justify-between">
-          <div>
-            <h2 className="text-xl font-bold text-white sm:text-4xl">
-              Colección de productos
-            </h2>
-            <p className="mt-4 max-w-md text-gray-400">
-              Variedad, calidad y estilo se fusionan en nuestra incomparable
-              colección de productos, adaptada para satisfacer cada necesidad y
-              elevar cada experiencia.
-            </p>
-          </div>
-          <div className="">
-            <img src="Logo3.webp" className="w-40" />
+          <div className="flex items-center w-full">
+            <div className="flex-1">
+              <h2 className="text-xl font-bold text-white sm:text-4xl">
+                Colección de productos
+              </h2>
+              <p className="mt-4 max-w-md text-gray-400">
+                Variedad, calidad y estilo se fusionan en nuestra incomparable colección
+                de productos, adaptada para satisfacer cada necesidad y elevar cada
+                experiencia.
+              </p>
+            </div>
+            <div className="flex-grow border-b border-white -mt-20 -ml-64"></div>
           </div>
         </header>
 
@@ -402,10 +402,10 @@ function VooidShop() {
                     <img
                       src={product.image}
                       alt=""
-                      className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
+                      className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px] bg-gradient-to-t from-[#2F2B36] to-slate-300"
                     />
                     <div className="relative bg-transparent pt-3">
-                      <h3 className="text-xs text-white group-hover:underline group-hover:underline-offset-4">
+                      <h3 className="text-sm text-white group-hover:underline group-hover:underline-offset-4">
                         {product.name}
                       </h3>
                       <p className="mt-2">
