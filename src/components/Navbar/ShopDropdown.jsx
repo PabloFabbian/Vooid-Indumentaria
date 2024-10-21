@@ -23,7 +23,7 @@ const ShopDropdown = () => {
     return (
         <NavigationMenu.Root>
             <NavigationMenu.List
-                className="transition duration-200"
+                className="transition duration-200 "
                 style={{ listStyleType: "none" }}
             >
                 <NavigationMenu.Item>
@@ -32,7 +32,7 @@ const ShopDropdown = () => {
                         onPointerEnter={handleShopPointerEnter}
                         onPointerLeave={handleShopPointerLeave}
                     >
-                        <span className="text-xl sm:text-base">Shop</span>{" "}
+                        <span className="md:text-sm 2xl:text-base">Shop</span>{" "}
                         <CaretDownIcon
                             className={classNames(
                                 "duration-[250] relative text-white transition-transform ease-in group-hover:rotate-180 group-hover:text-teal-500",

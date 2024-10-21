@@ -14,11 +14,11 @@ function NavBar() {
 
   return (
     <header className="body-font fixed top-0 z-10 w-full bg-black py-2 text-gray-400">
-      <div className="relative flex h-16 items-center justify-between px-3 py-3">
+      <div className="relative flex md:h-10 2xl:h-16 items-center justify-between px-3 py-3">
         {/* Desktop Navigation */}
         <div className="relative hidden w-full items-center md:flex">
           <div className="absolute left-0 flex items-center">
-            <NavigationMenu className="ml-6 flex items-center text-stone-100 space-x-10">
+            <NavigationMenu className="ml-6 flex md:text-sm 2xl:text-base items-center text-stone-100 space-x-10">
               <Link
                 to="/"
                 className="mr-4 cursor-pointer transition duration-200 hover:text-teal-500"
@@ -33,10 +33,10 @@ function NavBar() {
           </div>
 
           <div className="absolute inset-x-0 flex items-center justify-center">
-            <a className="flex items-center font-medium text-stone-100">
-              <h1 className="mr-4">Vooid</h1>
-              <img src="/Logo2.webp" className="h-12" alt="Void Indum." />
-              <h1 className="ml-4">Indum.</h1>
+            <a className="flex md:text-sm 2xl:text-base items-center font-medium text-stone-100">
+              <h1 className="mr-2 2xl:mr-4">Vooid</h1>
+              <img src="/Logo2.webp" className="md:h-10 2xl:h-12" alt="Void Indum." />
+              <h1 className="ml-2 2xl:ml-4">Indum.</h1>
             </a>
           </div>
 

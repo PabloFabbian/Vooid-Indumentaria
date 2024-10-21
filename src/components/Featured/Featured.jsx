@@ -2,18 +2,16 @@ import React from "react";
 
 function Featured() {
   return (
-    <section className="bg-gradient-to-b from-[#A79EAC] to-[#4A354A] body-font bg-gray-900 text-gray-400">
-      <div className="container mx-auto px-5 pb-0 pt-12  md:py-12">
+    <section className="bg-gradient-to-b from-[#A79EAC] to-[#4A354A] body-font text-gray-400">
+      <div className="container mx-auto px-5 pb-0 pt-12 md:py-12  w-[90%] mx-auto">
         <div className="mb-14 flex w-full flex-col text-center">
-          <p className="mb-2 text-lg text-cyan-200">Único</p>
-          <h1 className="mb-4 text-5xl font-bold tracking-wide text-cyan-50">
-            — Calidad y Variedad en la —<br /> Indumentaria Vooid
+          <p className="mb-2 text-sm text-cyan-200">Único</p>
+          <h1 className="mb-2 text-4xl font-bold tracking-wide text-cyan-50">
+              — Calidad y Variedad en la —
+            <br /> Indumentaria Vooid
           </h1>
-          <p className="mx-auto text-base leading-relaxed text-cyan-200">
-            En Vooid, ofrecemos una amplia gama de remeras de alta calidad en
-            varios colores e impresiones.
-            <br />
-            Encuentra el diseño perfecto para tu estilo único.
+          <p className="mx-auto md:text-sm 2xl:text-base leading-relaxed text-cyan-200">
+            En Vooid, ofrecemos una amplia gama de remeras de alta calidad en variados colores e impresiones.
           </p>
         </div>
         <div className="flex gap-20">
@@ -50,14 +48,14 @@ function Featured() {
             <div className="w-1/2 flex flex-col">
               {/* Primera sección */}
               <div className="flex-1 border-b border-cyan-200">
-                <h2 className="text-[2.3rem] text-cyan-50 font-bold leading-[3.2rem]">Materiales de calidad y confort duradero.</h2>
-                <p className="text-lg mt-2 text-cyan-200">Nuestras remeras son cómodas y duraderas, hechas con materiales premium.</p>
+                <h2 className="md:text-3xl 2xl:text-[2.3rem] text-cyan-50 font-bold leading-[3.2rem]">Materiales de calidad y confort duradero.</h2>
+                <p className="text-sm 2xl:text-lg mt-2 text-cyan-200">Nuestras remeras son cómodas y duraderas, hechas con materiales premium.</p>
               </div>
                 
               {/* Segunda sección */}
               <div className="flex-1 flex flex-col justify-end items-end">
-                <h2 className="text-[2.3rem] text-cyan-50 font-bold text-right leading-[3.2rem]">Los tonos brillantes que muestran tu estilo.</h2>
-                <p className="text-lg mt-2 text-cyan-200">Podes elegir entre una amplia gama de colores vivos para tu personalidad.</p>
+                <h2 className="md:text-3xl 2xl:text-[2.3rem] text-cyan-50 font-bold text-right leading-[3.2rem]">Los tonos brillantes que muestran tu estilo.</h2>
+                <p className="text-sm 2xl:text-lg mt-2 text-cyan-200">Podes elegir entre una amplia gama de colores vivos para tu personalidad.</p>
               </div>
             </div>
         </div>

@@ -28,7 +28,7 @@ const AboutDropdown = () => {
                 onPointerEnter={handleAboutPointerEnter}
                 onPointerLeave={handleAboutPointerLeave}
             >
-                <span className="text-xl sm:text-base">Quiénes Somos</span>{" "}
+                <span className="md:text-sm 2xl:text-base">Quiénes Somos</span>{" "}
                 <CaretDownIcon
                 className={classNames(
                     "duration-[250] relative text-white transition-transform ease-in group-hover:rotate-180 group-hover:text-teal-500",

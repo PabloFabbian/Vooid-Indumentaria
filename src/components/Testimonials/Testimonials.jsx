@@ -32,7 +32,7 @@ const TestimonialCard = ({ testimonial }) => {
         <div className="relative w-72 h-96 rounded-lg overflow-hidden shadow-lg -mt-16">
             <img src={testimonial.image} alt="Testimonial" className="w-full h-full object-cover" />
             <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-black to-transparent p-4 flex flex-col justify-end">
-                <p className="text-white mb-2 text-center">{testimonial.comment}</p>
+                <p className="md:text-sm 2xl:text-base text-white mb-2 text-center">{testimonial.comment}</p>
                 <StarRating rating={testimonial.rating} />
             </div>
         </div>
@@ -41,10 +41,12 @@ const TestimonialCard = ({ testimonial }) => {
 
 const Testimonials = () => {
     return (
-        <div className="bg-gradient-to-b from-[#B3BBC8] to-[#A79EAC] flex gap-4 justify-center">
-            {testimonials.map((testimonial, index) => (
-                <TestimonialCard key={index} testimonial={testimonial} />
-            ))}
+        <div className="bg-gradient-to-b from-[#B3BBC8] to-[#A79EAC]">
+            <div className="flex gap-4 justify-center md:scale-90 2xl:scale-100">
+                {testimonials.map((testimonial, index) => (
+                    <TestimonialCard key={index} testimonial={testimonial} />
+                ))}
+            </div>
         </div>
     );
 };

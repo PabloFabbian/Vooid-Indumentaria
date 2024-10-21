@@ -36,7 +36,7 @@ const HeroHeaderSection = () => {
   };
 
   return (
-    <div className="relative mt-16 flex h-screen items-center filter">
+    <div className="relative md:mt-14 2xl:mt-16 flex h-screen items-center filter">
       <video
         autoPlay
         muted
@@ -48,11 +48,11 @@ const HeroHeaderSection = () => {
         Your browser does not support the video tag.
       </video>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:-mt-14 2xl:-mt-10">
         <div className="mb-16 flex flex-col items-center text-center md:mb-0 drop-shadow-2xl">
           {/* Título con animación de entrada */}
           <motion.h1
-            className="text-pretty text-3xl font-bold leading-tight text-[#EFE9F3] sm:text-4xl lg:text-6xl"
+            className="text-pretty text-3xl font-bold leading-tight text-[#EFE9F3] sm:text-4xl 2xl:text-6xl"
             initial="hidden"
             animate="visible"
             variants={fadeInVariant}
@@ -67,7 +67,7 @@ const HeroHeaderSection = () => {
             src="/Vooid-logo.png"
             ref={parallaxRef}
             alt="Vooid Logo"
-            className="my-8 h-48 w-auto sm:h-64 drop-shadow-2xl"
+            className="my-8 h-48 w-auto 2xl:h-64 drop-shadow-2xl"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -75,7 +75,7 @@ const HeroHeaderSection = () => {
 
           {/* Párrafo con animación */}
           <motion.p
-            className="leading-8 text-pretty text-[#EFE9F3] text-lg font-semibold mb-12 mt-4 drop-shadow-2xl sm:text-xl"
+            className="leading-6 2xl:leading-8 text-pretty text-[#EFE9F3] text-md font-semibold mb-12 drop-shadow-2xl 2xl:text-xl"
             initial="hidden"
             animate="visible"
             variants={fadeInDelayedVariant}
