@@ -10,7 +10,7 @@ function MyFooter() {
             className="h-16 w-16 rounded-full p-2 text-white"
             alt="Void Indum."
           />
-          <span className="ml-3 text-xl">Vooid Indumentaria</span>
+          <span className="ml-3 text-base 2xl:text-xl">Vooid Indumentaria</span>
         </a>
         <p className="mt-4 text-sm text-gray-400 sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:pl-4">
           © 2024 Vooid Indumentaria —

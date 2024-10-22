@@ -8,8 +8,8 @@ const contactInfoData = [
 
 function ContactInfo() {
   return (
-    <section className="body-font bg-gradient-to-br from-black to-slate-800 text-gray-400">
-      <div className="container mx-auto px-5 pb-8 pt-6">
+    <section className="bg-gradient-to-br from-black to-slate-800 body-font text-gray-400">
+      <div className="container mx-auto px-5 py-6">
         <div className="-m-4 flex flex-wrap justify-center text-center">
           {contactInfoData.map((item, index) => (
             <div key={index} className="w-full p-4 sm:w-1/2 md:w-1/4">
@@ -19,12 +19,13 @@ function ContactInfo() {
                   {item.title}
                 </h2>
                 <p className="mb-2 text-sm 2xl:text-base">{item.text}</p>
-                <p className="leading-relaxed text-slate-300">{item.info}</p>
+                <p className="text-sm 2xl:text-base leading-relaxed text-slate-300">{item.info}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
+      <div className="bg-[#110911] pb-4"></div>
     </section>
   );
 }

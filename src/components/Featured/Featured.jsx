@@ -31,8 +31,8 @@ function Featured() {
                 </video>
                 <div className="absolute inset-0 group-hover:bg-black group-hover:opacity-50 m-0.5 transition duration-300"></div>
                 <div className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition duration-300">
-                    <span className="text-lg font-bold">Seguinos en Instagram</span>
-                    <svg className="h-6 w-6 ml-1 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <span className="text-sm 2xl:text-lg font-bold">Seguinos en Instagram</span>
+                    <svg className="h-4 2xl:h-6 h-4  2xl:w-6 ml-1 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                         <g id="SVGRepo_iconCarrier">
