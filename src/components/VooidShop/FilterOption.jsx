@@ -1,9 +1,21 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+
 const FilterOption = ({ label, options, onChange }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpen = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
-        <details className="overflow-hidden rounded border border-gray-300 [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center justify-between gap-2 bg-slate-300 p-4 transition">
+        <div className="overflow-hidden rounded border bg-slate-300 border-gray-300">
+            <div
+                className="flex cursor-pointer items-center justify-between gap-2 bg-slate-300 p-4 transition"
+                onClick={toggleOpen}
+            >
                 <span className="text-sm font-medium text-gray-500">{label}</span>
-                <span className="transition group-open:-rotate-180">
+                <span className={`transition ${isOpen ? "rotate-180" : ""}`}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -19,11 +31,23 @@ const FilterOption = ({ label, options, onChange }) => {
                         />
                     </svg>
                 </span>
-            </summary>
+            </div>
 
-            <div className="border-t border-gray-200 bg-slate-200">
+            <motion.div
+                className="border-t border-gray-200 bg-slate-200"
+                initial={false}
+                animate={isOpen ? "open" : "closed"}
+                variants={{
+                    open: { height: "auto", opacity: 1 },
+                    closed: { height: 0, opacity: 0 },
+                }}
+                transition={{ duration: 0.3 }}
+                style={{ overflow: "hidden" }}
+            >
                 <header className="flex items-center justify-between p-4">
-                    <span className="text-sm text-gray-700">0 Selected</span>
+                    <span className="text-sm text-gray-700">
+                        {options.filter(opt => opt.selected).length} Seleccionados
+                    </span>
                     <button
                         type="button"
                         className="text-sm text-gray-900 underline underline-offset-4"
@@ -53,8 +77,8 @@ const FilterOption = ({ label, options, onChange }) => {
                         </li>
                     ))}
                 </ul>
-            </div>
-        </details>
+            </motion.div>
+        </div>
     );
 };
 
