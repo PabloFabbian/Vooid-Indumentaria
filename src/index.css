@@ -1,8 +1,8 @@
+@import "transition-style";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "transition-style";
 
 * {
   padding: 0;
