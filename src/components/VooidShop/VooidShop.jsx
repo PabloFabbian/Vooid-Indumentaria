@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import SortBy from './SortBy';
-import FilterSection from './FilterSection';
+import SortBy from './Filters/SortBy';
+import FilterSection from './Filters/FilterSection';
+import ProductModal from './ProductModal'; // Importar el componente del modal
 
 const products = [
   { id: 1, image: "./Design4.png", type: "Black", name: "SEOUL T-Shirt", price: 16000, availability: "En Stock", color: "Negro" },
@@ -16,23 +17,22 @@ const products = [
 
 function VooidShop() {
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para el producto seleccionado
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar el modal
 
   const applyFilters = (filters) => {
     const { availability, priceRange, colors } = filters;
-
     const filtered = products.filter((product) => {
       const availabilityMatch = availability.length === 0 || availability.includes(product.availability);
       const priceMatch = (!priceRange.min || product.price >= priceRange.min) && (!priceRange.max || product.price <= priceRange.max);
       const colorMatch = colors.length === 0 || colors.includes(product.color);
       return availabilityMatch && priceMatch && colorMatch;
     });
-
     setFilteredProducts(filtered);
   };
 
   const handleSortChange = (sortOption) => {
     const sortedProducts = [...filteredProducts];
-
     switch (sortOption) {
       case 'nameAsc':
         sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
@@ -49,11 +49,22 @@ function VooidShop() {
       default:
         break;
     }
-
     setFilteredProducts(sortedProducts);
   };
 
   const formatPrice = (price) => `$${price.toLocaleString("es-AR")}`;
+
+  // Función para abrir el modal con el producto seleccionado
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  // Función para cerrar el modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
 
   return (
     <section className="bg-gradient-to-b from-[#4A354A] to-[#110911]">
@@ -93,7 +104,10 @@ function VooidShop() {
             <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
               {filteredProducts.map((product) => (
                 <li key={product.id} className="relative group">
-                  <a href="#" className="block overflow-hidden">
+                  <div
+                    className="block overflow-hidden cursor-pointer"
+                    onClick={() => handleProductClick(product)} // Evita el uso de href="#" para no ir al inicio
+                  >
                     <img
                       src={product.image}
                       alt={product.name}
@@ -107,23 +121,22 @@ function VooidShop() {
                       </div>
                     )}
                     <div className="relative bg-transparent pt-3">
-                      <h3 className="md:text-xs 2xl:text-base text-white group-hover:underline group-hover:underline-offset-4">
-                        {product.name}
-                      </h3>
-                      <p className="mt-0 2xl:mt-2">
-                        <span className="sr-only">Regular Price</span>
-                        <span className="tracking-wider text-white text-xs 2xl:text-base">
-                          {formatPrice(product.price)}
-                        </span>
+                      <h3 className="md:text-xs 2xl:text-lg text-white text-pretty">{product.name}</h3>
+                      <p className="md:text-xs 2xl:text-base my-1 font-semibold text-white">
+                        {formatPrice(product.price)}
                       </p>
                     </div>
-                  </a>
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+      )}
     </section>
   );
 }

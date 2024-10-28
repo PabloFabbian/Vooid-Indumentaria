@@ -1,8 +1,0 @@
-.transition-opacity {
-  transition-property: opacity;
-  opacity: 1;
-}
-
-.transition-opacity:hover {
-  opacity: 0;
-}
