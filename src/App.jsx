@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage";
-import NavBar from "./components/Navbar/Navbar";
+import NavBar from "./components/Navbar/NavBar";
 import MyFooter from "./components/Footer/MyFooter";
 import Whatsapp from "./components/Whatsapp/Whatsapp";
 import VooidShop from "./components/VooidShop/VooidShop";
