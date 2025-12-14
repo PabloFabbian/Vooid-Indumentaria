@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SortBy from './Filters/SortBy';
 import FilterSection from './Filters/FilterSection';
-import ProductModal from './ProductModal'; // Importar el componente del modal
+import ProductModal from './ProductModal';
 
 const products = [
   { id: 1, image: "./Design4.png", type: "Black", name: "SEOUL T-Shirt", price: 16000, availability: "En Stock", color: "Negro" },
@@ -17,8 +17,8 @@ const products = [
 
 function VooidShop() {
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para el producto seleccionado
-  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar el modal
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const applyFilters = (filters) => {
     const { availability, priceRange, colors } = filters;
@@ -54,75 +54,96 @@ function VooidShop() {
 
   const formatPrice = (price) => `$${price.toLocaleString("es-AR")}`;
 
-  // Función para abrir el modal con el producto seleccionado
   const handleProductClick = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
 
-  // Función para cerrar el modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedProduct(null);
   };
 
   return (
-    <section className="bg-gradient-to-b from-[#4A354A] to-[#110911]">
-      <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 w-[90%] mx-auto">
-        <header className="flex items-center justify-between">
-          <div className="flex items-center w-full">
-            <div className="flex-1">
-              <h2 className="text-xl font-bold text-white md:text-3xl 2xl:text-4xl">
-                Colección de productos
-              </h2>
-              <p className="md:text-sm 2xl:text-base mt-4 max-w-md text-gray-400 text-pretty">
-                Variedad, calidad y estilo se fusionan en nuestra incomparable colección
-                de productos, adaptada para satisfacer cada necesidad y elevar cada
-                experiencia.
-              </p>
+    <section className="relative bg-gradient-to-b from-[#2e1c2b] to-[#110911]">
+      <div className="relative mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 w-[90%]">
+        {/* Header limpio */}
+        <header className="mb-12">
+          <div className="inline-block mb-4">
+            <div className="px-4 py-1 bg-white/5 backdrop-blur-sm border border-white/20">
+              <span className="text-xs font-semibold tracking-widest text-gray-300 uppercase">
+                Colección
+              </span>
             </div>
-            <div className="flex-grow border-b border-white -mt-[4.2rem] 2xl:-mt-20 -ml-44 2xl:-ml-64"></div>
           </div>
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight leading-tight mb-4">
+            Productos Vooid
+          </h2>
+
+          <div className="w-20 h-0.5 bg-white/40 mb-6"></div>
+
+          <p className="max-w-2xl text-sm md:text-base text-gray-400">
+            Variedad, calidad y estilo se fusionan en nuestra colección de productos,
+            adaptada para satisfacer cada necesidad y elevar cada experiencia.
+          </p>
         </header>
 
         <div className="mt-8 block lg:hidden">
-          <button className="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
-            <span className="text-sm font-medium text-white">Filters & Sorting</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 rtl:rotate-180">
+          <button className="flex cursor-pointer items-center gap-2 border border-white/30 px-5 py-2 text-white transition hover:bg-white/5 hover:border-white/40 font-medium text-sm">
+            <span>Filters & Sorting</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-4 rtl:rotate-180">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
           </button>
         </div>
 
-        <div className="mt-4 lg:mt-8 lg:grid lg:grid-cols-4 lg:items-start lg:gap-8">
-          <div className="hidden space-y-4 lg:block">
+        <div className="mt-8 lg:mt-12 lg:grid lg:grid-cols-4 lg:items-start lg:gap-8">
+          <div className="hidden space-y-6 lg:block">
             <SortBy onSortChange={handleSortChange} />
             <FilterSection onFilterChange={applyFilters} />
           </div>
 
           <div className="lg:col-span-3">
-            <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
+            <ul className="grid grid-cols-2 gap-4 md:gap-6 md:grid-cols-3">
               {filteredProducts.map((product) => (
                 <li key={product.id} className="relative group">
                   <div
-                    className="block overflow-hidden cursor-pointer"
-                    onClick={() => handleProductClick(product)} // Evita el uso de href="#" para no ir al inicio
+                    className="block overflow-hidden cursor-pointer relative"
+                    onClick={() => handleProductClick(product)}
                   >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className={`h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 2xl:h-[450px] bg-gradient-to-t from-[#2F2B36] to-slate-300 ${
-                        product.availability === "Sin Stock" ? "brightness-75	filter blur-[3px]" : ""
-                      }`}
-                    />
-                    {product.availability === "Sin Stock" && (
-                      <div className="absolute inset-0 bg-opacity-70 flex items-center justify-center text-white font-semibold text-xl transition-opacity duration-300 opacity-0 group-hover:opacity-100 -mt-12">
-                        Agotado
-                      </div>
-                    )}
+                    <div className="relative border border-white/10 group-hover:border-white/30 transition-all duration-300 overflow-hidden">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className={`h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 2xl:h-[450px] bg-gradient-to-t from-[#2F2B36] to-slate-300 ${product.availability === "Sin Stock" ? "brightness-75 filter blur-[3px]" : ""
+                          }`}
+                      />
+
+                      {/* Badge de disponibilidad */}
+                      {product.availability === "Pre Order" && (
+                        <div className="absolute top-3 right-3 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 border border-white/30 uppercase tracking-wide">
+                          Pre Order
+                        </div>
+                      )}
+
+                      {product.availability === "En Stock" && (
+                        <div className="absolute top-3 right-3 w-2 h-2 bg-green-400 rounded-full"></div>
+                      )}
+
+                      {product.availability === "Sin Stock" && (
+                        <div className="absolute inset-0 bg-black/70 flex items-center justify-center text-white font-semibold text-xl transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                          Agotado
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Info del producto */}
                     <div className="relative bg-transparent pt-3">
-                      <h3 className="md:text-xs 2xl:text-lg text-white text-pretty">{product.name}</h3>
-                      <p className="md:text-xs 2xl:text-base my-1 font-semibold text-white">
+                      <h3 className="text-sm 2xl:text-base text-white font-medium mb-1">
+                        {product.name}
+                      </h3>
+                      <p className="text-sm 2xl:text-lg font-semibold text-white">
                         {formatPrice(product.price)}
                       </p>
                     </div>
