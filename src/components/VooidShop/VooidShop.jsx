@@ -116,7 +116,7 @@ function VooidShop() {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className={`h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 2xl:h-[450px] bg-gradient-to-t from-[#2F2B36] to-slate-300 ${product.availability === "Sin Stock" ? "brightness-75 filter blur-[3px]" : ""
+                        className={`h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 2xl:h-[450px] bg-gradient-to-br from-[#1E1D22] to-[#3E3A35] ${product.availability === "Sin Stock" ? "brightness-75 filter blur-[3px]" : ""
                           }`}
                       />
 

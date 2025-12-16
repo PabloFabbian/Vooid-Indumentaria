@@ -36,88 +36,119 @@ const HeroHeaderSection = () => {
   };
 
   return (
-    <div className="relative md:mt-14 2xl:mt-16 flex h-screen items-center filter">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute top-0 left-0 h-full w-full object-cover opacity-85"
-      >
-        <source src="./snow-bg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <div className="relative md:mt-14 2xl:mt-16 flex h-screen items-center">
+      {/* Video de fondo con overlay sutil */}
+      <div className="absolute top-0 left-0 h-full w-full">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute top-0 left-0 h-full w-full object-cover"
+        >
+          <source src="./snow-bg.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/30" />
+      </div>
 
-      <div className="container mx-auto px-4 md:-mt-14 2xl:-mt-10">
-        <div className="mb-16 flex flex-col items-center text-center md:mb-0 drop-shadow-2xl">
-          {/* Título con animación de entrada */}
+      <div className="container mx-auto px-4 md:-mt-14 2xl:-mt-10 relative z-10">
+        <div className="mb-16 flex flex-col items-center text-center md:mb-0">
+          {/* Título - Más profesional */}
           <motion.h1
-            className="text-pretty text-3xl font-bold leading-tight text-[#EFE9F3] sm:text-4xl 2xl:text-6xl"
+            className="text-pretty text-3xl font-bold leading-tight text-white sm:text-4xl 2xl:text-5xl mb-6"
             initial="hidden"
             animate="visible"
             variants={fadeInVariant}
           >
-            Descubrí los Últimos Diseños de
-            <br />
-            Indumentaria Oversize
+            <span className="block">COLECCIÓN INVIERNO 2025</span>
+            <span className="block text-xl font-light tracking-widest text-white/80 mt-4">
+              INDUMENTARIA OVERSIZE PREMIUM
+            </span>
           </motion.h1>
 
-          {/* Imagen de logo */}
-          <motion.img
-            src="/Vooid-logo.png"
+          {/* Logo con efecto de paralaje mejorado */}
+          <motion.div
             ref={parallaxRef}
-            alt="Vooid Logo"
-            className="my-8 h-48 w-auto 2xl:h-64 drop-shadow-2xl"
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="relative my-8"
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-          />
+          >
+            <div className="absolute -inset-4 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-xl opacity-0 hover:opacity-100 transition-opacity duration-500" />
+            <img
+              src="/Vooid-logo.png"
+              alt="Vooid Logo"
+              className="relative h-48 w-auto 2xl:h-64 filter brightness-110 contrast-110"
+            />
+          </motion.div>
 
-          {/* Párrafo con animación */}
+          {/* Párrafo - Texto más profesional */}
           <motion.p
-            className="leading-6 2xl:leading-8 text-pretty text-[#EFE9F3] text-md font-semibold mb-12 drop-shadow-2xl 2xl:text-xl"
+            className="leading-6 2xl:leading-8 text-pretty text-white text-md font-medium mb-12 max-w-2xl mx-auto 2xl:text-lg"
             initial="hidden"
             animate="visible"
             variants={fadeInDelayedVariant}
           >
-            Compra ahora diseños exclusivos o personalizados que te hagan único.
-            <br className="hidden lg:inline-block" />
-            Calidad, color y estampados que se ajustan a tu estilo.
+            <span className="block mb-2">Diseños exclusivos en colaboración con artistas urbanos.</span>
+            <span className="block text-white/90">
+              Materiales técnicos • Garantía de calidad • Edición limitada
+            </span>
           </motion.p>
 
-          {/* Botones con animación */}
+          {/* Botones - Más elegantes */}
           <motion.div
-            className="mt-16 flex flex-col sm:flex-row sm:justify-center lg:-mt-6"
+            className="mt-16 flex flex-col sm:flex-row sm:justify-center gap-4 lg:-mt-6"
             initial="hidden"
             animate="visible"
             variants={fadeInButtonVariant}
           >
-            <button className="inline-flex items-center bg-transparent rounded-xl border-[1.75px] text-lg font-semibold text-[#EFE9F3] transition duration-300 ease-in-out px-6 py-2 drop-shadow-2xl hover:scale-110 mb-4 sm:mb-0 sm:mr-4">
-              Shop&nbsp;
-              <svg
-                className="w-6 h-6"
-                fill="currentColor"
-                version="1.1"
-                id="Layer_1"
-                viewBox="0 0 432.695 432.695"
-                stroke="currentColor"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                  <g>
-                    <g>
-                      <path d="M384.297,83.285c-0.172-4.014-3.476-7.179-7.493-7.179h-62.747V60.543c0-33.383-27.159-60.542-60.542-60.542c-12.119,0-23.408,3.593-32.884,9.749C211.152,3.593,199.862,0,187.742,0c-16.164,0-31.366,6.3-42.802,17.735c-11.439,11.428-17.74,26.63-17.74,42.807v15.563H55.89c-4.018,0-7.321,3.166-7.493,7.179l-14.618,341.59c-0.087,2.043,0.663,4.033,2.078,5.509c1.414,1.476,3.37,2.311,5.415,2.311h74.319c0.005,0,0.01,0.001,0.014,0.001h275.817c2.045,0,4.001-0.835,5.415-2.311c1.415-1.477,2.165-3.467,2.078-5.51L384.297,83.285z M253.515,15.002c25.111,0,45.541,20.43,45.541,45.541v15.561h-50.771V60.542c0-15.555-5.901-29.755-15.576-40.489C238.95,16.833,246.021,15.002,253.515,15.002z"></path>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </button>
-            <button className="inline-flex bg-transparent rounded-xl border-[1.75px] text-lg font-semibold text-[#EFE9F3] transition duration-300 ease-in-out px-6 py-2 drop-shadow-2xl hover:scale-110">
-              Conocer <span className="text-2xl font-bold -mt-[0.205rem]">&nbsp;+</span>
-            </button>
+            {/* Botón Shop - Estilo premium */}
+            <motion.button
+              className="group inline-flex items-center bg-white text-black rounded-lg border-0 text-lg font-semibold transition-all duration-300 px-8 py-3 hover:bg-gray-100"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="flex items-center gap-2">
+                VER COLECCIÓN
+                <svg
+                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="currentColor"
+                  viewBox="0 0 432.695 432.695"
+                >
+                  <path d="M384.297,83.285c-0.172-4.014-3.476-7.179-7.493-7.179h-62.747V60.543c0-33.383-27.159-60.542-60.542-60.542c-12.119,0-23.408,3.593-32.884,9.749C211.152,3.593,199.862,0,187.742,0c-16.164,0-31.366,6.3-42.802,17.735c-11.439,11.428-17.74,26.63-17.74,42.807v15.563H55.89c-4.018,0-7.321,3.166-7.493,7.179l-14.618,341.59c-0.087,2.043,0.663,4.033,2.078,5.509c1.414,1.476,3.37,2.311,5.415,2.311h74.319c0.005,0,0.01,0.001,0.014,0.001h275.817c2.045,0,4.001-0.835,5.415-2.311c1.415-1.477,2.165-3.467,2.078-5.51L384.297,83.285z" />
+                </svg>
+              </span>
+            </motion.button>
+
+            {/* Botón Conocer - Borde elegante */}
+            <motion.button
+              className="group inline-flex items-center bg-transparent rounded-lg border border-white/40 text-lg font-semibold text-white transition-all duration-300 px-8 py-3 hover:bg-white/10 hover:border-white"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="flex items-center">
+                LOOKBOOK
+                <span className="text-xl font-bold ml-2 group-hover:rotate-90 transition-transform">+</span>
+              </span>
+            </motion.button>
           </motion.div>
+
+          {/* Línea decorativa sutil */}
+          <motion.div
+            className="mt-16 h-px w-32 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 1.2, duration: 1 }}
+          />
         </div>
+      </div>
+
+      {/* Marca de agua sutil */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <span className="text-xs tracking-widest text-white/40 font-light">
+          VOID™ • WINTER 2025
+        </span>
       </div>
     </div>
   );

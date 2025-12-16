@@ -119,7 +119,7 @@ const TestimonialCard = ({ testimonial }) => {
 
 const Testimonials = () => {
     return (
-        <div className="bg-gradient-to-b from-[#babec6] to-[#050404] py-8">
+        <div className="bg-gradient-to-b from-[#93959c] to-[#050404] py-8">
             <div className="flex md:gap-8 2xl:gap-10 justify-center md:scale-90 2xl:scale-100">
                 {testimonials.map((testimonial, index) => (
                     <TestimonialCard key={index} testimonial={testimonial} />

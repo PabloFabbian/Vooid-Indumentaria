@@ -78,7 +78,7 @@ function MyFooter() {
 
         {/* Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© 2024 Vooid Indumentaria. Todos los derechos reservados.</p>
+          <p>© 2025 Vooid Indumentaria. Todos los derechos reservados.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-gray-300 transition-colors">Política de Privacidad</a>
             <a href="#" className="hover:text-gray-300 transition-colors">Términos y Condiciones</a>

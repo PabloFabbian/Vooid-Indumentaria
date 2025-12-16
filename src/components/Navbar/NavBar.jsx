@@ -13,7 +13,7 @@ function NavBar() {
   };
 
   return (
-    <header className="body-font fixed top-0 z-10 w-full bg-black py-2 text-gray-400">
+    <header className="body-font fixed top-0 z-50 w-full bg-black py-2 text-gray-400">
       <div className="relative flex md:h-10 2xl:h-16 items-center justify-between px-3 py-3">
         {/* Desktop Navigation */}
         <div className="relative hidden w-full items-center md:flex">
