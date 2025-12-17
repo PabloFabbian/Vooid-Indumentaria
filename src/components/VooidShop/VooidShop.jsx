@@ -2,27 +2,16 @@ import React, { useState } from "react";
 import SortBy from './Filters/SortBy';
 import FilterSection from './Filters/FilterSection';
 import ProductModal from './ProductModal';
-
-const products = [
-  { id: 1, image: "./Design4.png", type: "Black", name: "SEOUL T-Shirt", price: 16000, availability: "En Stock", color: "Negro" },
-  { id: 2, image: "./Design5.png", type: "Hoodie", name: "Vivre La Vie Graphic T-Shirt", price: 21150, availability: "Pre Order", color: "Blanco" },
-  { id: 3, image: "./Design6.png", type: "White", name: "Plain Beige T-Shirt", price: 12000, availability: "Sin Stock", color: "Crema" },
-  { id: 4, image: "./Design7.png", type: "Black", name: "Realistic T-Shirt", price: 18400, availability: "En Stock", color: "Crema" },
-  { id: 5, image: "./Design8.png", type: "Red", name: "BONELESS T-Shirt", price: 16000, availability: "Pre Order", color: "Verde" },
-  { id: 6, image: "./Design9.png", type: "Cream", name: "Brooklyn T-Shirt", price: 21150, availability: "En Stock", color: "Beige" },
-  { id: 7, image: "./Design1.png", type: "Black", name: "Solstice Hoodie", price: 12000, availability: "Sin Stock", color: "Gris" },
-  { id: 8, image: "./Design2.png", type: "Drip", name: "Neptune Hoodie", price: 18400, availability: "En Stock", color: "Negro" },
-  { id: 9, image: "./Design3.png", type: "Hoodie", name: "Ferrari Hoodie", price: 16500, availability: "Pre Order", color: "Blanco" },
-];
+import { productsData } from './productsData';
 
 function VooidShop() {
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState(productsData);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const applyFilters = (filters) => {
     const { availability, priceRange, colors } = filters;
-    const filtered = products.filter((product) => {
+    const filtered = productsData.filter((product) => {
       const availabilityMatch = availability.length === 0 || availability.includes(product.availability);
       const priceMatch = (!priceRange.min || product.price >= priceRange.min) && (!priceRange.max || product.price <= priceRange.max);
       const colorMatch = colors.length === 0 || colors.includes(product.color);
