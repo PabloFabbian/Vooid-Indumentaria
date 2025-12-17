@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import SortBy from './Filters/SortBy';
 import FilterSection from './Filters/FilterSection';
 import ProductModal from './ProductModal';
+import ModalContainer from './ModalContainer';
 import { productsData } from './productsData';
 
-function VooidShop() {
+const VooidShop = () => {
   const [filteredProducts, setFilteredProducts] = useState(productsData);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showCartNotification, setShowCartNotification] = useState(false);
+  const [lastAddedProduct, setLastAddedProduct] = useState(null);
+  const [modalExiting, setModalExiting] = useState(false);
+  const [cartEntering, setCartEntering] = useState(false);
 
   const applyFilters = (filters) => {
     const { availability, priceRange, colors } = filters;
@@ -35,8 +40,6 @@ function VooidShop() {
       case 'priceDesc':
         sortedProducts.sort((a, b) => b.price - a.price);
         break;
-      default:
-        break;
     }
     setFilteredProducts(sortedProducts);
   };
@@ -46,32 +49,129 @@ function VooidShop() {
   const handleProductClick = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
+    setModalExiting(false);
+    setCartEntering(false);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedProduct(null);
+    setShowCartNotification(false);
+  };
+
+  const addToCart = (product) => {
+    setLastAddedProduct(product);
+    setModalExiting(true);
+
+    // Iniciar la entrada del carrito con un pequeño delay
+    setTimeout(() => {
+      setCartEntering(true);
+    }, 200);
+
+    // Cambiar al carrito después de que el modal haya salido
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setShowCartNotification(true);
+      setModalExiting(false);
+    }, 400);
+  };
+
+  const handleBuyNow = () => {
+    console.log("Redirigiendo a checkout con:", lastAddedProduct);
+    setShowCartNotification(false);
+  };
+
+  const handleContinueShopping = () => {
+    setShowCartNotification(false);
+  };
+
+  const renderModalContent = () => {
+    // Si el modal está abierto (incluyendo durante la transición de salida)
+    if (isModalOpen) {
+      return (
+        <ProductModal
+          product={selectedProduct}
+          onClose={handleCloseModal}
+          onAddToCart={addToCart}
+          isExiting={modalExiting}
+        />
+      );
+    }
+
+    // Si la notificación del carrito está abierta
+    if (showCartNotification) {
+      return (
+        <div className={`relative bg-gradient-to-br from-[#2e1c2b] to-[#110911] border border-white/20 p-6 md:p-8 max-w-md w-[90%] rounded-lg shadow-2xl ${cartEntering ? 'animate-cartFromModalTransform' : 'animate-scaleIn'}`}>
+          <div className="flex justify-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-r from-white/10 to-white/5 border border-white/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-bold text-white text-center mb-2">¡Añadido al carrito!</h3>
+
+          {lastAddedProduct && (
+            <div className="flex items-center space-x-4 mb-6 p-3 bg-white/5 rounded-lg border border-white/10">
+              <img
+                src={lastAddedProduct.image}
+                alt={lastAddedProduct.name}
+                className="w-16 h-16 object-cover rounded border border-white/20"
+              />
+              <div>
+                <p className="text-white font-medium text-sm">{lastAddedProduct.name}</p>
+                <p className="text-white/80 font-semibold">{formatPrice(lastAddedProduct.price)}</p>
+              </div>
+            </div>
+          )}
+
+          <div className="space-y-3">
+            <button
+              onClick={handleBuyNow}
+              className="w-full py-3 bg-gradient-to-r from-white to-gray-300 text-black font-semibold rounded-md hover:from-gray-300 hover:to-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Comprar ahora
+            </button>
+            <button
+              onClick={handleContinueShopping}
+              className="w-full py-3 bg-transparent border border-white/30 text-white font-medium rounded-md hover:bg-white/5 transition-all duration-300"
+            >
+              Seguir mirando
+            </button>
+          </div>
+
+          <div className="text-center mt-4">
+            <button onClick={() => console.log("Ir al carrito")} className="text-sm text-white/70 hover:text-white transition-colors duration-200">
+              Ver carrito (1)
+            </button>
+          </div>
+
+          <button onClick={handleContinueShopping} className="absolute top-3 right-3 text-white/50 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      );
+    }
+
+    return null;
   };
 
   return (
     <section className="relative bg-gradient-to-b from-[#2e1c2b] to-[#110911]">
       <div className="relative mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 w-[90%]">
-        {/* Header limpio */}
         <header className="mb-12">
           <div className="inline-block mb-4">
             <div className="px-4 py-1 bg-white/5 backdrop-blur-sm border border-white/20">
-              <span className="text-xs font-semibold tracking-widest text-gray-300 uppercase">
-                Colección
-              </span>
+              <span className="text-xs font-semibold tracking-widest text-gray-300 uppercase">Colección</span>
             </div>
           </div>
-
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight leading-tight mb-4">
             Productos Vooid
           </h2>
-
           <div className="w-20 h-0.5 bg-white/40 mb-6"></div>
-
           <p className="max-w-2xl text-sm md:text-base text-gray-400">
             Variedad, calidad y estilo se fusionan en nuestra colección de productos,
             adaptada para satisfacer cada necesidad y elevar cada experiencia.
@@ -97,44 +197,30 @@ function VooidShop() {
             <ul className="grid grid-cols-2 gap-4 md:gap-6 md:grid-cols-3">
               {filteredProducts.map((product) => (
                 <li key={product.id} className="relative group">
-                  <div
-                    className="block overflow-hidden cursor-pointer relative"
-                    onClick={() => handleProductClick(product)}
-                  >
+                  <div className="block overflow-hidden cursor-pointer relative" onClick={() => handleProductClick(product)}>
                     <div className="relative border border-white/10 group-hover:border-white/30 transition-all duration-300 overflow-hidden">
                       <img
                         src={product.image}
                         alt={product.name}
-                        className={`h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 2xl:h-[450px] bg-gradient-to-br from-[#1E1D22] to-[#3E3A35] ${product.availability === "Sin Stock" ? "brightness-75 filter blur-[3px]" : ""
-                          }`}
+                        className={`h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 2xl:h-[450px] bg-gradient-to-br from-[#1E1D22] to-[#3E3A35] ${product.availability === "Sin Stock" ? "brightness-75 filter blur-[3px]" : ""}`}
                       />
-
-                      {/* Badge de disponibilidad */}
                       {product.availability === "Pre Order" && (
                         <div className="absolute top-3 right-3 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 border border-white/30 uppercase tracking-wide">
                           Pre Order
                         </div>
                       )}
-
                       {product.availability === "En Stock" && (
                         <div className="absolute top-3 right-3 w-2 h-2 bg-green-400 rounded-full"></div>
                       )}
-
                       {product.availability === "Sin Stock" && (
                         <div className="absolute inset-0 bg-black/70 flex items-center justify-center text-white font-semibold text-xl transition-opacity duration-300 opacity-0 group-hover:opacity-100">
                           Agotado
                         </div>
                       )}
                     </div>
-
-                    {/* Info del producto */}
                     <div className="relative bg-transparent pt-3">
-                      <h3 className="text-sm 2xl:text-base text-white font-medium mb-1">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm 2xl:text-lg font-semibold text-white">
-                        {formatPrice(product.price)}
-                      </p>
+                      <h3 className="text-sm 2xl:text-base text-white font-medium mb-1">{product.name}</h3>
+                      <p className="text-sm 2xl:text-lg font-semibold text-white">{formatPrice(product.price)}</p>
                     </div>
                   </div>
                 </li>
@@ -144,11 +230,14 @@ function VooidShop() {
         </div>
       </div>
 
-      {isModalOpen && (
-        <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+      {/* Un solo fondo para ambos modales */}
+      {(isModalOpen || showCartNotification) && (
+        <ModalContainer onClose={handleCloseModal}>
+          {renderModalContent()}
+        </ModalContainer>
       )}
     </section>
   );
-}
+};
 
 export default VooidShop;

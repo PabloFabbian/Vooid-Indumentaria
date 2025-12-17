@@ -1,5 +1,3 @@
-@import "transition-style";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,7 +12,6 @@ body {
   background-color: #253652;
 }
 
-/* Scrollbar puntiaguda estilo Volcom */
 ::-webkit-scrollbar {
   width: 12px;
   background-color: #0a0a0a;
@@ -29,7 +26,6 @@ body {
   background: linear-gradient(180deg, #2d1b2a 0%, #1a1a1a 100%);
   border: 2px solid #0a0a0a;
   border-radius: 0;
-  transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -37,21 +33,6 @@ body {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(180deg, #4d3b4a 0%, #3a3a3a 100%);
-}
-
-/* Esquinas decorativas en la scrollbar */
-::-webkit-scrollbar-thumb::before,
-::-webkit-scrollbar-thumb::after {
-  content: '';
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Firefox scrollbar */
 * {
   scrollbar-width: thin;
   scrollbar-color: #2d1b2a #0a0a0a;
@@ -68,21 +49,6 @@ body {
   }
 }
 
-/*------------------------------------------------*/
-
-.parallax-container {
-  position: relative;
-}
-
-.parallax-container>* {
-  position: relative;
-}
-
-.App {
-  position: relative;
-}
-
-/* Animaciones para el modal principal */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -127,68 +93,199 @@ body {
   }
 }
 
-/* Animaciones para los detalles del producto */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideOutToLeft {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes detailsOverlayIn {
+@keyframes slideDown {
   from {
     opacity: 0;
-    backdrop-filter: blur(0px);
+    transform: translateY(-20px);
   }
 
   to {
     opacity: 1;
-    backdrop-filter: blur(8px);
+    transform: translateY(0);
   }
 }
 
-@keyframes detailsOverlayOut {
-  from {
-    opacity: 1;
-    backdrop-filter: blur(8px);
-  }
-
-  to {
-    opacity: 0;
-    backdrop-filter: blur(0px);
-  }
-}
-
-@keyframes itemFadeIn {
+@keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateY(20px);
   }
 
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-/* Clases de animación para entrada */
+@keyframes modalExitToCart {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.9) translateY(100px);
+  }
+}
+
+@keyframes cartEnterFromModal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-100px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95) translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-fadeOut {
+  animation: fadeOut 0.2s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-scaleOut {
+  animation: scaleOut 0.3s ease-out forwards;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+.animate-modalExitToCart {
+  animation: modalExitToCart 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-cartEnterFromModal {
+  animation: cartEnterFromModal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+@keyframes modalContentExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  30% {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+  }
+}
+
+@keyframes modalContentEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-40px);
+  }
+
+  70% {
+    opacity: 0.7;
+    transform: scale(0.95) translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes cartNotificationEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modalContentExit {
+  animation: modalContentExit 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-modalContentEnter {
+  animation: modalContentEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-cartNotificationEnter {
+  animation: cartNotificationEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modalToCartTransform {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale(0.8) translateY(40px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(40px);
+  }
+}
+
+@keyframes cartFromModalTransform {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-40px);
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modalToCartTransform {
+  animation: modalToCartTransform 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-cartFromModalTransform {
+  animation: cartFromModalTransform 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Asegúrate de que estos estén también */
 .animate-fadeIn {
   animation: fadeIn 0.2s ease-out forwards;
 }
@@ -197,73 +294,64 @@ body {
   animation: scaleIn 0.3s ease-out forwards;
 }
 
-.animate-slideInFromLeft {
-  animation: slideInFromLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+/* Animaciones para los botones */
+@keyframes pulseSubtle {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
 }
 
-.animate-detailsOverlayIn {
-  animation: detailsOverlayIn 0.3s ease-out forwards;
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-/* Clases de animación para salida */
-.animate-fadeOut {
-  animation: fadeOut 0.2s ease-out forwards;
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  70% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
-.animate-scaleOut {
-  animation: scaleOut 0.3s ease-out forwards;
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s ease-in-out infinite;
 }
 
-.animate-slideOutToLeft {
-  animation: slideOutToLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
 }
 
-.animate-detailsOverlayOut {
-  animation: detailsOverlayOut 0.3s ease-out forwards;
+.animate-bounce-in {
+  animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* Animación para items de detalles */
-.flex.items-start.gap-2.group {
-  animation: itemFadeIn 0.5s ease-out forwards;
-  opacity: 0;
-}
-
-/* Estilos para select personalizados */
-select {
-  cursor: pointer;
-  background-image: none !important;
-}
-
-select option {
-  background: #2d1b2a;
-  color: white;
-  padding: 10px;
-}
-
-/* Estilos para scrollbar personalizada */
-.modal-scroll::-webkit-scrollbar {
-  width: 4px;
-}
-
-.modal-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2px;
-}
-
-.modal-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-}
-
-.modal-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* Toast animations */
-.toast-enter {
-  animation: fadeIn 0.2s ease-out forwards;
-}
-
-.toast-exit {
-  animation: fadeOut 0.2s ease-out forwards;
+/* Mejoras para la notificación */
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }

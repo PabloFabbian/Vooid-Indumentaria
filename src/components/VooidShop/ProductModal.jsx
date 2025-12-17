@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { availableColors, availableSizes, sizeGuide, productCareDetails, additionalInfo } from './productsData';
 
-const ProductModal = ({ product, onClose }) => {
+const ProductModal = ({ product, onClose, onAddToCart, isExiting }) => {
     const [quantity, setQuantity] = useState(1);
     const [selectedColor, setSelectedColor] = useState('');
     const [selectedSize, setSelectedSize] = useState('');
@@ -10,9 +10,7 @@ const ProductModal = ({ product, onClose }) => {
     const [showDetails, setShowDetails] = useState(false);
 
     useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
         checkMobile();
         window.addEventListener('resize', checkMobile);
 
@@ -21,18 +19,10 @@ const ProductModal = ({ product, onClose }) => {
             setSelectedSize('M');
         }
 
-        return () => {
-            window.removeEventListener('resize', checkMobile);
-        };
+        return () => window.removeEventListener('resize', checkMobile);
     }, [product]);
 
     if (!product) return null;
-
-    const handleBackgroundClick = (e) => {
-        if (e.target.id === 'modal-background') {
-            onClose();
-        }
-    };
 
     const formatPrice = (price) => `$${price.toLocaleString("es-AR")}`;
 
@@ -45,11 +35,7 @@ const ProductModal = ({ product, onClose }) => {
 
         if (isMobile && navigator.share) {
             try {
-                await navigator.share({
-                    title: product.name,
-                    text: shareText,
-                    url: productUrl,
-                });
+                await navigator.share({ title: product.name, text: shareText, url: productUrl });
             } catch (error) {
                 fallbackCopyToClipboard(shareText);
             }
@@ -64,7 +50,7 @@ const ProductModal = ({ product, onClose }) => {
                 setShowCopiedToast(true);
                 setTimeout(() => setShowCopiedToast(false), 2000);
             })
-            .catch(err => {
+            .catch(() => {
                 const textArea = document.createElement('textarea');
                 textArea.value = text;
                 document.body.appendChild(textArea);
@@ -83,16 +69,21 @@ const ProductModal = ({ product, onClose }) => {
         alert(`Guía de talles:\n\n${guideText}`);
     };
 
-    const toggleDetails = () => {
-        setShowDetails(!showDetails);
+    const handleAddToCart = () => {
+        if (product.availability === "Sin Stock") return;
+
+        const productToAdd = {
+            ...product,
+            quantity,
+            selectedColor,
+            selectedSize
+        };
+
+        onAddToCart?.(productToAdd);
     };
 
     return (
-        <div
-            id="modal-background"
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm animate-fadeIn p-4 overflow-y-auto"
-            onClick={handleBackgroundClick}
-        >
+        <>
             {showCopiedToast && (
                 <div className="fixed top-4 right-4 z-50 bg-[#2d1b2a]/90 backdrop-blur-sm text-white px-4 py-3 rounded-lg border border-white/20 flex items-center gap-2 animate-fadeIn">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -103,7 +94,7 @@ const ProductModal = ({ product, onClose }) => {
             )}
 
             <div
-                className="relative bg-gradient-to-b from-[#2d1b2a] to-[#110911] backdrop-blur-xl rounded-lg max-w-4xl w-full shadow-2xl border border-white/10 animate-scaleIn overflow-hidden my-8"
+                className={`relative bg-gradient-to-b from-[#2d1b2a] to-[#110911] backdrop-blur-xl rounded-lg max-w-4xl w-full shadow-2xl border border-white/10 overflow-hidden my-8 ${isExiting ? 'animate-modalToCartTransform' : 'animate-scaleIn'}`}
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-transparent pointer-events-none"></div>
@@ -118,71 +109,17 @@ const ProductModal = ({ product, onClose }) => {
                 </button>
 
                 <div className="flex flex-col lg:flex-row p-8 lg:p-10 gap-8 lg:gap-10">
-                    {/* Imagen del producto CON SUPERPOSICIÓN DE DETALLES */}
-                    <div className="w-full lg:w-1/2 relative flex-shrink-0">
-                        <div className="relative overflow-hidden border border-white/10">
+                    <div className="w-full lg:w-1/2 relative">
+                        <div className="relative overflow-hidden border border-white/10 mb-6">
                             <img
                                 src={product.image}
                                 alt={product.name}
                                 className="w-full h-full object-cover bg-gradient-to-br from-[#141318] to-[#2B2824]"
                             />
-
                             <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/40"></div>
                             <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/40"></div>
                             <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/40"></div>
                             <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/40"></div>
-
-                            {/* Superposición animada de detalles */}
-                            {showDetails && product.details && (
-                                <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black/90 backdrop-blur-sm flex items-center justify-center p-6 animate-detailsIn z-10">
-                                    <div className="w-full h-full flex flex-col">
-                                        {/* Botón cerrar detalles */}
-                                        <button
-                                            onClick={toggleDetails}
-                                            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-white hover:text-gray-300 transition-colors z-20"
-                                        >
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-
-                                        {/* Contenido de detalles */}
-                                        <div className="flex-1 overflow-y-auto py-4 pr-2">
-                                            <h3 className="text-xl font-bold text-white mb-4 pb-3 border-b border-white/20">
-                                                Detalles Técnicos
-                                            </h3>
-
-                                            <div className="space-y-3">
-                                                {product.details.description.map((detail, index) => (
-                                                    <div key={index} className="flex items-start gap-2 group">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-white/60 mt-2 flex-shrink-0 group-hover:bg-white transition-colors"></div>
-                                                        <p className="text-sm text-white/90 leading-relaxed group-hover:text-white transition-colors">
-                                                            {detail}
-                                                        </p>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            {/* Info adicional */}
-                                            <div className="mt-8 pt-6 border-t border-white/20">
-                                                <h4 className="text-sm font-semibold text-white/80 mb-3">
-                                                    Cuidado del producto
-                                                </h4>
-                                                <div className="grid grid-cols-2 gap-3 text-xs text-white/70">
-                                                    {productCareDetails.map((care, index) => (
-                                                        <div key={index} className="flex items-center gap-2">
-                                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                            </svg>
-                                                            <span>{care.text}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
 
                             {product.availability === "Pre Order" && (
                                 <div className="absolute top-5 right-5 bg-[#2d1b2a]/95 backdrop-blur-md text-white text-xs font-medium px-4 py-2 border border-white/20 shadow-lg">
@@ -200,10 +137,48 @@ const ProductModal = ({ product, onClose }) => {
                                 </div>
                             )}
                         </div>
+
+                        {showDetails && product.details && (
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/90 to-black/95 backdrop-blur-lg flex items-center justify-center p-6 animate-fadeIn z-10 rounded-lg border border-white/20">
+                                <div className="w-full h-full flex flex-col">
+                                    <button
+                                        onClick={() => setShowDetails(false)}
+                                        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-white hover:text-gray-300 transition-colors z-20 bg-black/50 rounded-full border border-white/20"
+                                    >
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                    <div className="flex-1 overflow-y-auto py-4 pr-2">
+                                        <h3 className="text-xl font-bold text-white mb-4 pb-3 border-b border-white/20">Detalles Técnicos</h3>
+                                        <div className="space-y-3">
+                                            {product.details.description.map((detail, index) => (
+                                                <div key={index} className="flex items-start gap-2 group">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-white/60 mt-2 flex-shrink-0 group-hover:bg-white transition-colors"></div>
+                                                    <p className="text-sm text-white/90 leading-relaxed group-hover:text-white transition-colors">{detail}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="mt-8 pt-6 border-t border-white/20">
+                                            <h4 className="text-sm font-semibold text-white/80 mb-3">Cuidado del producto</h4>
+                                            <div className="grid grid-cols-2 gap-3 text-xs text-white/70">
+                                                {productCareDetails.map((care, index) => (
+                                                    <div key={index} className="flex items-center gap-2">
+                                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                        </svg>
+                                                        <span>{care.text}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
-                    {/* Información del producto */}
-                    <div className="w-full lg:w-1/2 flex flex-col relative min-h-0">
+                    <div className="w-full lg:w-1/2 flex flex-col relative">
                         <div className="inline-block mb-4 self-start">
                             <span className="px-4 py-1.5 bg-white/5 border border-white/20 text-gray-300 text-xs font-medium tracking-wider uppercase">
                                 {product.type}
@@ -222,13 +197,9 @@ const ProductModal = ({ product, onClose }) => {
 
                         <div className="w-16 h-0.5 bg-white/30 mb-6"></div>
 
-                        {/* Grid de selectores */}
                         <div className="grid grid-cols-2 gap-5 mb-6">
-                            {/* Selector de color */}
                             <div className="relative">
-                                <label className="block text-xs text-gray-400 font-medium mb-3 uppercase tracking-wide">
-                                    Color
-                                </label>
+                                <label className="block text-xs text-gray-400 font-medium mb-3 uppercase tracking-wide">Color</label>
                                 <div className="relative">
                                     <select
                                         className="w-full p-3 bg-white/5 backdrop-blur-sm border border-white/20 text-white text-sm focus:outline-none focus:border-white/40 transition-all appearance-none"
@@ -247,16 +218,10 @@ const ProductModal = ({ product, onClose }) => {
                                 </div>
                             </div>
 
-                            {/* Selector de talle */}
                             <div className="relative">
                                 <div className="flex items-center justify-between mb-3">
-                                    <label className="block text-xs text-gray-400 font-medium uppercase tracking-wide">
-                                        Talle
-                                    </label>
-                                    <button
-                                        className="text-xs text-gray-400 hover:text-white transition-colors flex items-center gap-1"
-                                        onClick={handleSizeGuideClick}
-                                    >
+                                    <label className="block text-xs text-gray-400 font-medium uppercase tracking-wide">Talle</label>
+                                    <button className="text-xs text-gray-400 hover:text-white transition-colors flex items-center gap-1" onClick={handleSizeGuideClick}>
                                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
@@ -282,11 +247,8 @@ const ProductModal = ({ product, onClose }) => {
                             </div>
                         </div>
 
-                        {/* Cantidad */}
                         <div className="mb-6">
-                            <label className="block text-xs text-gray-400 font-medium mb-3 uppercase tracking-wide">
-                                Cantidad
-                            </label>
+                            <label className="block text-xs text-gray-400 font-medium mb-3 uppercase tracking-wide">Cantidad</label>
                             <div className="flex items-center gap-4">
                                 <button
                                     onClick={decrementQuantity}
@@ -294,9 +256,7 @@ const ProductModal = ({ product, onClose }) => {
                                 >
                                     −
                                 </button>
-                                <span className="text-xl font-semibold text-white min-w-[1.5rem] text-center">
-                                    {quantity}
-                                </span>
+                                <span className="text-xl font-semibold text-white min-w-[1.5rem] text-center">{quantity}</span>
                                 <button
                                     onClick={incrementQuantity}
                                     className="w-11 h-11 bg-white/5 backdrop-blur-sm border border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all font-semibold"
@@ -306,9 +266,9 @@ const ProductModal = ({ product, onClose }) => {
                             </div>
                         </div>
 
-                        {/* Botones de acción */}
                         <div className="space-y-4 mb-6">
                             <button
+                                onClick={handleAddToCart}
                                 className="relative w-full py-3.5 bg-white text-[#2d1b2a] border border-white/20 font-semibold text-sm hover:bg-gray-100 shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white group"
                                 disabled={product.availability === "Sin Stock"}
                             >
@@ -324,11 +284,8 @@ const ProductModal = ({ product, onClose }) => {
 
                             <div className="grid grid-cols-2 gap-3">
                                 <button
-                                    onClick={toggleDetails}
-                                    className={`py-3 backdrop-blur-sm border font-medium text-xs transition-all flex items-center justify-center gap-2 group ${showDetails
-                                        ? 'bg-white/20 border-white/40 text-white'
-                                        : 'bg-white/5 border-white/20 text-white hover:bg-white/10 hover:border-white/30'
-                                        }`}
+                                    onClick={() => setShowDetails(!showDetails)}
+                                    className={`py-3 backdrop-blur-sm border font-medium text-xs transition-all flex items-center justify-center gap-2 group ${showDetails ? 'bg-white/20 border-white/40 text-white' : 'bg-white/5 border-white/20 text-white hover:bg-white/10 hover:border-white/30'}`}
                                 >
                                     <svg className={`w-4 h-4 transition-transform ${showDetails ? 'rotate-180' : 'group-hover:scale-110'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -348,7 +305,6 @@ const ProductModal = ({ product, onClose }) => {
                             </div>
                         </div>
 
-                        {/* Info adicional */}
                         <div className="p-4 bg-white/5 backdrop-blur-sm border border-white/10 space-y-3">
                             {additionalInfo.map((info, index) => (
                                 <div key={index} className="flex items-start gap-3">
@@ -362,76 +318,7 @@ const ProductModal = ({ product, onClose }) => {
                     </div>
                 </div>
             </div>
-
-            <style>{`
-                @keyframes fadeIn {
-                    from {
-                        opacity: 0;
-                    }
-                    to {
-                        opacity: 1;
-                    }
-                }
-                @keyframes scaleIn {
-                    from {
-                        opacity: 0;
-                        transform: scale(0.95);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: scale(1);
-                    }
-                }
-                @keyframes detailsIn {
-                    from {
-                        opacity: 0;
-                        backdrop-filter: blur(0px);
-                    }
-                    to {
-                        opacity: 1;
-                        backdrop-filter: blur(8px);
-                    }
-                }
-                .animate-fadeIn {
-                    animation: fadeIn 0.2s ease-out;
-                }
-                .animate-scaleIn {
-                    animation: scaleIn 0.3s ease-out;
-                }
-                .animate-detailsIn {
-                    animation: detailsIn 0.3s ease-out;
-                }
-                
-                select {
-                    cursor: pointer;
-                    background-image: none !important;
-                }
-                
-                select option {
-                    background: #2d1b2a;
-                    color: white;
-                    padding: 10px;
-                }
-                
-                .overflow-y-auto::-webkit-scrollbar {
-                    width: 4px;
-                }
-                
-                .overflow-y-auto::-webkit-scrollbar-track {
-                    background: rgba(255, 255, 255, 0.05);
-                    border-radius: 2px;
-                }
-                
-                .overflow-y-auto::-webkit-scrollbar-thumb {
-                    background: rgba(255, 255, 255, 0.2);
-                    border-radius: 2px;
-                }
-                
-                .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-                    background: rgba(255, 255, 255, 0.3);
-                }
-            `}</style>
-        </div>
+        </>
     );
 };
 
