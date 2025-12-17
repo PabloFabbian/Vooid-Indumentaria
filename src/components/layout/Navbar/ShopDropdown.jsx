@@ -53,7 +53,7 @@ const ShopDropdown = () => {
                                 <li className="row-span-3 grid duration-300 hover:scale-105 hover:cursor-pointer">
                                     <a
                                         className="flex h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b from-black to-indigo9 p-[25px] text-white no-underline outline-none focus:shadow-violet7"
-                                        onClick={() => navigate("/vooidshop")}
+                                        onClick={() => navigate("/products")}
                                     >
                                         <img src="./Logo3.webp" className="w-70" alt="Logo" />
                                         <div className="mb-[7px] mt-4 text-center text-[18px] font-medium leading-[1.2] dark:text-white">

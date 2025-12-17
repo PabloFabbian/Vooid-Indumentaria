@@ -3,12 +3,19 @@ import { Link } from 'react-router-dom';
 
 const CartNotification = ({ product, onBuyNow, onContinueShopping, onClose, formatPrice, cartItemsCount }) => {
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center animate-fadeIn">
-            <div className="relative bg-gradient-to-br from-[#2e1c2b] to-[#110911] border border-white/20 p-8 md:p-10 max-w-md w-[90%] rounded-xl shadow-2xl animate-slideUp">
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+            {/* Fondo con blur */}
+            <div
+                className="absolute inset-0 bg-black/75 backdrop-blur-sm animate-fadeIn"
+                onClick={onClose}
+            />
+
+            {/* Contenido de la notificación */}
+            <div className="relative bg-gradient-to-br from-[#2e1c2b] to-[#110911] border border-white/20 p-8 md:p-10 max-w-md w-[90%] rounded-xl shadow-2xl animate-slideUp z-10">
                 {/* Botón cerrar */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-white/50 hover:text-white transition-colors hover:bg-white/5 rounded-full"
+                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-white/50 hover:text-white transition-colors hover:bg-white/5 rounded-full z-20"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -43,29 +50,33 @@ const CartNotification = ({ product, onBuyNow, onContinueShopping, onClose, form
                             <img
                                 src={product.image}
                                 alt={product.name}
-                                className="w-20 h-20 object-cover rounded border border-white/20"
+                                className="w-20 h-20 object-cover rounded-lg border border-white/20"
                             />
                             {/* Badge de cantidad */}
                             {product.quantity > 1 && (
-                                <div className="absolute -top-2 -right-2 bg-white text-[#2e1c2b] text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
+                                <div className="absolute -top-2 -right-2 bg-white text-[#2e1c2b] text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-lg">
                                     ×{product.quantity}
                                 </div>
                             )}
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-white font-medium text-sm mb-1 truncate">{product.name}</p>
-                            <p className="text-white/80 font-semibold text-lg">{formatPrice(product.price)}</p>
-                            <div className="flex items-center gap-2 mt-1">
-                                <span className="text-xs text-white/60">{product.selectedColor}</span>
+                            <p className="text-white font-medium text-sm mb-1">{product.name}</p>
+                            <p className="text-white/80 font-semibold text-lg mb-1">{formatPrice(product.price)}</p>
+                            <div className="flex items-center gap-2">
+                                <span className="text-xs text-white/60 bg-white/10 px-2 py-0.5 rounded">
+                                    {product.selectedColor}
+                                </span>
                                 <span className="text-xs text-white/60">•</span>
-                                <span className="text-xs text-white/60">Talle: {product.selectedSize}</span>
+                                <span className="text-xs text-white/60 bg-white/10 px-2 py-0.5 rounded">
+                                    Talle: {product.selectedSize}
+                                </span>
                             </div>
                         </div>
                     </div>
                 )}
 
                 {/* Botones de acción */}
-                <div className="space-y-3">
+                <div className="space-y-3 mb-6">
                     <Link
                         to="/checkout"
                         onClick={onBuyNow}
@@ -83,9 +94,10 @@ const CartNotification = ({ product, onBuyNow, onContinueShopping, onClose, form
                 </div>
 
                 {/* Link al carrito */}
-                <div className="text-center mt-6 pt-6 border-t border-white/10">
+                <div className="text-center pt-6 border-t border-white/10">
                     <Link
                         to="/cart"
+                        onClick={onClose}
                         className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors duration-300 group"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

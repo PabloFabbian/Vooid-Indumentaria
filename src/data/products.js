@@ -1,5 +1,3 @@
-// src/components/VooidShop/productsData.js
-
 export const productsData = [
     {
         id: 1,

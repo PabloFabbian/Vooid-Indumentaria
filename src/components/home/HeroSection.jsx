@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import "../../index.css";
+import "../../styles/globals.css";
 
 const HeroHeaderSection = () => {
   const parallaxRef = useRef(null);
@@ -36,7 +36,7 @@ const HeroHeaderSection = () => {
   };
 
   return (
-    <div className="relative md:mt-14 2xl:mt-16 flex h-screen items-center">
+    <div className="relative flex h-dvh items-center">
       {/* Video de fondo con overlay sutil */}
       <div className="absolute top-0 left-0 h-full w-full">
         <video
@@ -145,9 +145,9 @@ const HeroHeaderSection = () => {
       </div>
 
       {/* Marca de agua sutil */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 z-10">
         <span className="text-xs tracking-widest text-white/40 font-light">
-          VOID™ • WINTER 2025
+          VOOID™ • WINTER 2025
         </span>
       </div>
     </div>

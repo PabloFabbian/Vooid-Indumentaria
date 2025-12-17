@@ -1,0 +1,156 @@
+/* src/styles/globals.css */
+@import './animations.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #253652;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #0a0a0a;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #0a0a0a;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2d1b2a 0%, #1a1a1a 100%);
+  border: 2px solid #0a0a0a;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3d2b3a 0%, #2a2a2a 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2d1b2a #0a0a0a;
+}
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
+  body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
+
+/* Estilos para inputs */
+input,
+select,
+textarea {
+  background-color: transparent;
+  color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Mejoras de accesibilidad */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Utilidades personalizadas */
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.shadow-3xl {
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.6);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.bg-gradient-radial {
+  background-image: radial-gradient(circle at center, var(--tw-gradient-stops));
+}
+
+/* Clases para modales y overlays */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/75 backdrop-blur-sm;
+}
+
+.modal-content {
+  @apply relative bg-gradient-to-br from-[#2e1c2b] to-[#110911] border border-white/20 rounded-xl shadow-2xl;
+}
+
+/* Utilidades para texto */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Gradientes personalizados */
+.gradient-primary {
+  background: linear-gradient(135deg, #2e1c2b 0%, #110911 100%);
+}
+
+.gradient-card {
+  background: linear-gradient(135deg, rgba(46, 28, 43, 0.9) 0%, rgba(17, 9, 17, 0.9) 100%);
+}
+
+/* Transiciones personalizadas */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-bounce {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Clases para el carrito */
+.cart-badge {
+  @apply absolute -top-1 -right-1 bg-white text-[#2e1c2b] text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center;
+}
+
+/* Clases para productos */
+.product-card {
+  @apply relative border border-white/10 hover:border-white/30 transition-all duration-300 overflow-hidden;
+}
+
+.product-image {
+  @apply w-full h-full object-cover transition duration-500 group-hover:scale-105 bg-gradient-to-br from-[#1E1D22] to-[#3E3A35];
+}
+
+/* Utilidades para responsividad */
+@media (max-width: 640px) {
+  .container-padding {
+    @apply px-4;
+  }
+
+  .text-responsive {
+    font-size: clamp(0.875rem, 4vw, 1rem);
+  }
+}

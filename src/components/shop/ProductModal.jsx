@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { availableColors, availableSizes, sizeGuide, productCareDetails, additionalInfo } from './productsData';
+import { availableColors, availableSizes, sizeGuide, productCareDetails, additionalInfo } from '../../data/products';
+import { formatPrice } from '../../utils/formatters';
 
 const ProductModal = ({ product, onClose, onAddToCart, isExiting }) => {
     const [quantity, setQuantity] = useState(1);
