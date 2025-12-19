@@ -21,12 +21,14 @@ const VooidShop = () => {
   const { addToCart: addToCartContext, getCartItemsCount } = useCart();
 
   const applyFilters = (filters) => {
-    const { availability, priceRange, colors } = filters;
+    const { availability, priceRange, colors, categories } = filters; // ← Añadir categories
     const filtered = productsData.filter((product) => {
       const availabilityMatch = availability.length === 0 || availability.includes(product.availability);
       const priceMatch = (!priceRange.min || product.price >= priceRange.min) && (!priceRange.max || product.price <= priceRange.max);
       const colorMatch = colors.length === 0 || colors.includes(product.color);
-      return availabilityMatch && priceMatch && colorMatch;
+      const categoryMatch = categories.length === 0 || categories.includes(product.category); // ← Nuevo filtro
+
+      return availabilityMatch && priceMatch && colorMatch && categoryMatch;
     });
     setFilteredProducts(filtered);
   };
@@ -139,7 +141,11 @@ const VooidShop = () => {
         <div className="mt-8 lg:mt-12 lg:grid lg:grid-cols-4 lg:items-start lg:gap-8">
           <div className="hidden space-y-6 lg:block">
             <SortBy onSortChange={handleSortChange} />
-            <FilterSection onFilterChange={applyFilters} />
+            <FilterSection
+              onFilterChange={applyFilters}
+              filteredProducts={filteredProducts.length}
+              allProducts={productsData}
+            />
           </div>
 
           <div className="lg:col-span-3">

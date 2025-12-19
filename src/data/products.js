@@ -8,6 +8,7 @@ export const productsData = [
         price: 16000,
         availability: "En Stock",
         color: "Negro",
+        category: "Remera",
         details: {
             title: "SEOUL T-Shirt",
             description: [
@@ -29,6 +30,7 @@ export const productsData = [
         price: 21150,
         availability: "Pre Order",
         color: "Blanco",
+        category: "Hoodie",
         details: {
             title: "Vivre La Vie Graphic T-Shirt",
             description: [
@@ -50,6 +52,7 @@ export const productsData = [
         price: 12000,
         availability: "Sin Stock",
         color: "Crema",
+        category: "Remera",
         details: {
             title: "Plain Beige T-Shirt",
             description: [
@@ -71,6 +74,7 @@ export const productsData = [
         price: 18400,
         availability: "En Stock",
         color: "Crema",
+        category: "Remera",
         details: {
             title: "Realistic T-Shirt",
             description: [
@@ -92,6 +96,7 @@ export const productsData = [
         price: 16000,
         availability: "Pre Order",
         color: "Verde",
+        category: "Remera",
         details: {
             title: "BONELESS T-Shirt",
             description: [
@@ -113,6 +118,7 @@ export const productsData = [
         price: 21150,
         availability: "En Stock",
         color: "Beige",
+        category: "Remera",
         details: {
             title: "Brooklyn T-Shirt",
             description: [
@@ -134,6 +140,7 @@ export const productsData = [
         price: 12000,
         availability: "Sin Stock",
         color: "Gris",
+        category: "Hoodie",
         details: {
             title: "Solstice Hoodie",
             description: [
@@ -155,6 +162,7 @@ export const productsData = [
         price: 18400,
         availability: "En Stock",
         color: "Negro",
+        category: "Hoodie",
         details: {
             title: "Neptune Hoodie",
             description: [
@@ -176,6 +184,7 @@ export const productsData = [
         price: 16500,
         availability: "Pre Order",
         color: "Blanco",
+        category: "Hoodie",
         details: {
             title: "Ferrari Hoodie",
             description: [
@@ -189,6 +198,14 @@ export const productsData = [
             ]
         }
     }
+];
+
+export const productCategories = [
+    "Remera",
+    "Hoodie",
+    "Short",
+    "Gorro",
+    "Accesorio"
 ];
 
 export const productCareDetails = [
