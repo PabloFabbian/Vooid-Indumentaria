@@ -3,57 +3,77 @@ import React, { createContext, useState, useEffect, useCallback } from 'react';
 
 const CartContext = createContext();
 
+// Función para normalizar rutas de imágenes
+const normalizeImagePath = (image) => {
+    if (!image) return 'https://via.placeholder.com/150x150/2e1c2b/ffffff?text=Vooid';
+
+    if (image.startsWith('http://') || image.startsWith('https://')) {
+        return image;
+    }
+
+    if (image.startsWith('./')) {
+        return image.replace('./', '/');
+    }
+
+    if (image.startsWith('Design')) {
+        return `/${image}`;
+    }
+
+    return image;
+};
+
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
 
-    // Cargar del localStorage al iniciar
+    const normalizeCartItem = (item) => {
+        return {
+            ...item,
+            image: normalizeImagePath(item.image)
+        };
+    };
+
     useEffect(() => {
         const savedCart = localStorage.getItem('vooid_cart');
         if (savedCart) {
             try {
                 const parsedCart = JSON.parse(savedCart);
-                console.log('Cart loaded from localStorage:', parsedCart);
-                setCartItems(parsedCart);
+                const normalizedCart = parsedCart.map(normalizeCartItem);
+                setCartItems(normalizedCart);
             } catch (error) {
-                console.error('Error al cargar el carrito:', error);
+                console.error('Error loading cart:', error);
             }
         }
     }, []);
 
-    // Guardar en localStorage cuando cambia
     useEffect(() => {
-        console.log('Cart updated, saving to localStorage:', cartItems);
         localStorage.setItem('vooid_cart', JSON.stringify(cartItems));
     }, [cartItems]);
 
     const addToCart = useCallback((product) => {
-        console.log('Adding to cart:', product);
+        const normalizedProduct = normalizeCartItem(product);
+
         setCartItems(prev => {
             const existingItemIndex = prev.findIndex(item =>
-                item.id === product.id &&
-                item.selectedColor === product.selectedColor &&
-                item.selectedSize === product.selectedSize
+                item.id === normalizedProduct.id &&
+                item.selectedColor === normalizedProduct.selectedColor &&
+                item.selectedSize === normalizedProduct.selectedSize
             );
 
             if (existingItemIndex !== -1) {
                 const newItems = [...prev];
                 newItems[existingItemIndex] = {
                     ...newItems[existingItemIndex],
-                    quantity: newItems[existingItemIndex].quantity + product.quantity
+                    quantity: newItems[existingItemIndex].quantity + normalizedProduct.quantity
                 };
-                console.log('Item already in cart, updating quantity:', newItems);
                 return newItems;
             } else {
-                const newItems = [...prev, product];
-                console.log('New item added to cart:', newItems);
-                return newItems;
+                return [...prev, normalizedProduct];
             }
         });
     }, []);
 
     const removeFromCart = useCallback((itemId, color, size) => {
-        console.log('Removing from cart:', itemId, color, size);
         setCartItems(prev =>
             prev.filter(item =>
                 !(item.id === itemId &&
@@ -65,8 +85,6 @@ export const CartProvider = ({ children }) => {
 
     const updateQuantity = useCallback((itemId, color, size, newQuantity) => {
         if (newQuantity < 1) return;
-        console.log('Updating quantity:', itemId, newQuantity);
-
         setCartItems(prev =>
             prev.map(item =>
                 item.id === itemId &&
@@ -79,34 +97,26 @@ export const CartProvider = ({ children }) => {
     }, []);
 
     const clearCart = useCallback(() => {
-        console.log('Clearing cart');
         setCartItems([]);
     }, []);
 
     const getCartTotal = useCallback(() => {
-        const total = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-        console.log('Calculating cart total:', total);
-        return total;
+        return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
     }, [cartItems]);
 
     const getCartItemsCount = useCallback(() => {
-        const count = cartItems.reduce((count, item) => count + item.quantity, 0);
-        console.log('Calculating cart items count:', count);
-        return count;
+        return cartItems.reduce((count, item) => count + item.quantity, 0);
     }, [cartItems]);
 
     const toggleCart = useCallback(() => {
-        console.log('Toggling cart, current state:', isCartOpen);
         setIsCartOpen(prev => !prev);
-    }, [isCartOpen]);
+    }, []);
 
     const openCart = useCallback(() => {
-        console.log('Opening cart');
         setIsCartOpen(true);
     }, []);
 
     const closeCart = useCallback(() => {
-        console.log('Closing cart');
         setIsCartOpen(false);
     }, []);
 

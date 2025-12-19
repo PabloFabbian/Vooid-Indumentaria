@@ -1,7 +1,8 @@
+// src/data/products.js
 export const productsData = [
     {
         id: 1,
-        image: "./Design4.png",
+        image: "/Design4.png",
         type: "Black",
         name: "SEOUL T-Shirt",
         price: 16000,
@@ -22,7 +23,7 @@ export const productsData = [
     },
     {
         id: 2,
-        image: "./Design5.png",
+        image: "/Design5.png",
         type: "Hoodie",
         name: "Vivre La Vie Graphic T-Shirt",
         price: 21150,
@@ -43,7 +44,7 @@ export const productsData = [
     },
     {
         id: 3,
-        image: "./Design6.png",
+        image: "/Design6.png",
         type: "White",
         name: "Plain Beige T-Shirt",
         price: 12000,
@@ -64,7 +65,7 @@ export const productsData = [
     },
     {
         id: 4,
-        image: "./Design7.png",
+        image: "/Design7.png",
         type: "Black",
         name: "Realistic T-Shirt",
         price: 18400,
@@ -85,7 +86,7 @@ export const productsData = [
     },
     {
         id: 5,
-        image: "./Design8.png",
+        image: "/Design8.png",
         type: "Red",
         name: "BONELESS T-Shirt",
         price: 16000,
@@ -106,7 +107,7 @@ export const productsData = [
     },
     {
         id: 6,
-        image: "./Design9.png",
+        image: "/Design9.png",
         type: "Cream",
         name: "Brooklyn T-Shirt",
         price: 21150,
@@ -127,7 +128,7 @@ export const productsData = [
     },
     {
         id: 7,
-        image: "./Design1.png",
+        image: "/Design1.png",
         type: "Black",
         name: "Solstice Hoodie",
         price: 12000,
@@ -148,7 +149,7 @@ export const productsData = [
     },
     {
         id: 8,
-        image: "./Design2.png",
+        image: "/Design2.png",
         type: "Drip",
         name: "Neptune Hoodie",
         price: 18400,
@@ -169,7 +170,7 @@ export const productsData = [
     },
     {
         id: 9,
-        image: "./Design3.png",
+        image: "/Design3.png",
         type: "Hoodie",
         name: "Ferrari Hoodie",
         price: 16500,
@@ -190,7 +191,6 @@ export const productsData = [
     }
 ];
 
-// Detalles de cuidado del producto (compartidos por todos)
 export const productCareDetails = [
     { icon: "check", text: "Lavar a 30°C" },
     { icon: "check", text: "No usar secadora" },
@@ -198,14 +198,12 @@ export const productCareDetails = [
     { icon: "check", text: "Lavar del revés" }
 ];
 
-// Información adicional (compartida por todos)
 export const additionalInfo = [
     { text: "Envío gratis +$50.000" },
     { text: "Cambios sin cargo" },
     { text: "Hasta 12 cuotas s/interés" }
 ];
 
-// Opciones de colores disponibles
 export const availableColors = [
     "Negro",
     "Gris Oscuro",
@@ -214,10 +212,8 @@ export const availableColors = [
     "Azul Marino"
 ];
 
-// Opciones de talles disponibles
 export const availableSizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
-// Guía de talles
 export const sizeGuide = {
     XS: "44-46",
     S: "46-48",
