@@ -86,6 +86,9 @@ function Featured() {
           </div>
         </div>
       </div>
+      <div className="bg-gradient-to-b from-[#281926] to-[#1c101b] pt-24">
+        <hr className="border-t border-cyan-900 ml-56" />
+      </div>
     </section>
   );
 }
