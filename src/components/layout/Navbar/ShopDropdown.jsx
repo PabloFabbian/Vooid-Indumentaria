@@ -54,19 +54,27 @@ const ShopDropdown = () => {
                                 asChild
                             >
                                 <motion.div
-                                    initial={{ opacity: 0, x: 200 }} // Desde la derecha
+                                    initial={{ opacity: 0, x: 200 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: 200 }}
                                     transition={{ duration: 0.25, ease: "easeOut" }}
-                                    className="rounded-lg" // Bordes redondeados
+                                    className="rounded-lg"
                                 >
                                     <ul className="m-0 grid list-none gap-x-[10px] bg-black p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
                                         <li className="row-span-3 grid duration-300 hover:scale-105 hover:cursor-pointer">
                                             <a
-                                                className="flex h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b from-black to-indigo-900 p-[25px] text-white no-underline outline-none focus:shadow-violet7 hover:shadow-lg hover:shadow-indigo-900/30 transition-shadow"
+                                                className="flex h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b from-black to-indigo-900 p-[25px] text-white no-underline outline-none transition-shadow focus:shadow-violet7 hover:shadow-lg hover:shadow-indigo-900/30"
                                                 onClick={() => navigate("/products")}
                                             >
-                                                <img src="./Logo3.webp" className="w-70" alt="Logo" />
+                                                <img
+                                                    src="/Logo3.webp"
+                                                    className="w-70"
+                                                    alt="Vooid Shop Logo"
+                                                    onError={(e) => {
+                                                        e.target.onerror = null;
+                                                        e.target.src = "https://via.placeholder.com/200x100/1e293b/ffffff?text=VOID";
+                                                    }}
+                                                />
                                                 <div className="mb-[7px] mt-4 text-center text-[18px] font-medium leading-[1.2] dark:text-white">
                                                     Vooid Shop
                                                 </div>

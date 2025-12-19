@@ -10,6 +10,7 @@ import Footer from "./components/layout/Footer/Footer";
 
 // Common Components
 import WhatsappButton from "./components/common/Whatsapp/WhatsappButton";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 // Pages
 import HomePage from "./components/home/HomePage";
@@ -24,6 +25,7 @@ function App() {
       <BrowserRouter>
         <div className="min-h-screen bg-gradient-to-b from-[#2e1c2b] to-[#110911] flex flex-col">
           <Navbar />
+          <ScrollToTop />
           <main className="flex-grow pt-16 md:pt-12">
             <Routes>
               <Route path="/" element={<HomePage />} />
