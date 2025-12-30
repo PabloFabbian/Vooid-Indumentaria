@@ -17,11 +17,11 @@ function Navbar() {
   return (
     <>
       <header className="body-font fixed top-0 z-50 w-full bg-black py-1 text-gray-400">
-        <div className="relative flex md:h-10 2xl:h-16 items-center justify-between px-3 py-3">
+        <div className="relative flex md:h-12 2xl:h-16 items-center justify-between px-3 py-3">
           {/* Desktop Navigation */}
           <div className="relative hidden w-full items-center md:flex">
             <div className="absolute left-0 flex items-center">
-              <NavigationMenu className="ml-6 flex md:text-sm 2xl:text-base items-center text-stone-100 space-x-10">
+              <NavigationMenu className="ml-6 flex md:text-[0.8rem] 2xl:text-base items-center text-stone-100 md:space-x-6 2xl:space-x-10">
                 <Link
                   to="/"
                   className="mr-4 cursor-pointer transition duration-200 hover:text-teal-500"
@@ -41,7 +41,7 @@ function Navbar() {
             <div className="absolute inset-x-0 flex items-center justify-center">
               <Link
                 to="/"
-                className="flex md:text-sm 2xl:text-base items-center font-medium text-stone-100 hover:text-teal-500 transition-colors"
+                className="flex md:text-[0.8rem] 2xl:text-base items-center font-medium text-stone-100 hover:text-teal-500 transition-colors"
               >
                 <h1 className="mr-2 2xl:mr-4">Vooid</h1>
                 <img src="/Logo2.webp" className="md:h-10 2xl:h-12" alt="Void Indum." />

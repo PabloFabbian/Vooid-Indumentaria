@@ -33,7 +33,7 @@ const ShopDropdown = () => {
                         onPointerEnter={handleShopPointerEnter}
                         onPointerLeave={handleShopPointerLeave}
                     >
-                        <span className="md:text-sm 2xl:text-base">Shop</span>
+                        <span className="md:text-[0.8rem] 2xl:text-base">Shop</span>
                         <motion.div
                             animate={{ rotate: isShopOpen ? 180 : 0 }}
                             transition={{ duration: 0.2 }}
@@ -48,7 +48,7 @@ const ShopDropdown = () => {
                     <AnimatePresence>
                         {isShopOpen && (
                             <NavigationMenu.Content
-                                className="absolute -left-[21.5rem] top-0 mt-16 w-full rounded-lg bg-black hover:cursor-pointer sm:w-auto"
+                                className="absolute md:-left-[22rem] 2xl:-left-[21.5rem] md:top-12 2xl:top-16 w-full rounded-lg bg-black hover:cursor-pointer sm:w-auto"
                                 onPointerEnter={handleShopPointerEnter}
                                 onPointerLeave={handleShopPointerLeave}
                                 asChild

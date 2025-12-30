@@ -29,7 +29,7 @@ const AboutDropdown = () => {
                 onPointerEnter={handleAboutPointerEnter}
                 onPointerLeave={handleAboutPointerLeave}
             >
-                <span className="md:text-sm 2xl:text-base">Quiénes Somos</span>
+                <span className="md:text-[0.8rem] 2xl:text-base">Quiénes Somos</span>
                 <motion.div
                     animate={{ rotate: isAboutOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
@@ -44,7 +44,7 @@ const AboutDropdown = () => {
             <AnimatePresence>
                 {isAboutOpen && (
                     <NavigationMenu.Content
-                        className="absolute -left-7 top-0 p-1 w-full mt-16 rounded-lg bg-black hover:cursor-pointer sm:w-auto"
+                        className="absolute md:-left-7 2xl:-left-7 md:-top-4 2xl:top-0 p-1 w-full mt-16 rounded-lg bg-black hover:cursor-pointer sm:w-auto"
                         onPointerEnter={handleAboutPointerEnter}
                         onPointerLeave={handleAboutPointerLeave}
                         asChild

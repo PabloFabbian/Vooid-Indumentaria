@@ -12,7 +12,7 @@ const CartIcon = () => {
         >
             <img
                 src="/Cart.png"
-                className="h-7 transition duration-300 hover:opacity-80"
+                className="md:h-6 2xl:h-7 transition duration-300 hover:opacity-80"
                 alt="Carrito"
             />
             {itemCount > 0 && (
