@@ -217,7 +217,7 @@ const VooidShop = () => {
             <div className="lg:col-span-3">
               {/* Barra superior sólida solo con controles de vista */}
               <motion.div
-                className="sticky top-4 z-20 mb-6"
+                className="mb-6"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}

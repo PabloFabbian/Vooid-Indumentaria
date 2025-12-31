@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronUp, X, Check } from "lucide-react";
 
-const FilterOption = ({ label, options, onChange, isOpen, onToggle, onClose }) => {
+const FilterOption = ({ label, options, onChange, isOpen, onToggle }) => {
     const selectedCount = options.filter(opt => opt.selected).length;
 
     const toggleOpen = () => {
@@ -21,27 +20,9 @@ const FilterOption = ({ label, options, onChange, isOpen, onToggle, onClose }) =
         onChange(resetOptions);
     };
 
-    // Cerrar el filtro cuando se hace clic fuera (opcional)
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            // Si el filtro está abierto y se hace clic fuera, cerrarlo
-            if (isOpen && !event.target.closest('.filter-option-container')) {
-                onClose();
-            }
-        };
-
-        if (isOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [isOpen, onClose]);
-
     return (
         <motion.div
-            className="relative w-full filter-option-container"
+            className="relative w-full"
             initial={false}
         >
             {/* Botón principal */}
@@ -101,25 +82,26 @@ const FilterOption = ({ label, options, onChange, isOpen, onToggle, onClose }) =
                         opacity: 1,
                         height: "auto",
                         marginTop: "12px",
-                        pointerEvents: "auto"
+                        display: "block"
                     },
                     closed: {
                         opacity: 0,
                         height: 0,
                         marginTop: "0px",
-                        pointerEvents: "none"
+                        transitionEnd: {
+                            display: "none"
+                        }
                     }
                 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className={`
-                    absolute top-full left-0 right-0 z-10
+                className="
                     bg-gradient-to-b from-[#2c1b29] to-[#1a1018]
                     backdrop-blur-xl
                     border border-white/20
                     rounded-lg
                     overflow-hidden
                     shadow-2xl
-                `}
+                "
             >
                 {/* Header del panel */}
                 <div className="p-4 border-b border-white/10">
@@ -134,7 +116,7 @@ const FilterOption = ({ label, options, onChange, isOpen, onToggle, onClose }) =
                         </div>
 
                         {selectedCount > 0 && (
-                            <button
+                            <motion.button
                                 onClick={handleReset}
                                 className="
                                     flex items-center gap-1.5
@@ -151,7 +133,7 @@ const FilterOption = ({ label, options, onChange, isOpen, onToggle, onClose }) =
                             >
                                 <X className="w-3 h-3" />
                                 Limpiar
-                            </button>
+                            </motion.button>
                         )}
                     </div>
 
