@@ -26,10 +26,10 @@ const ProductList = ({ products, onProductClick, formatPrice }) => {
                     className="group"
                 >
                     <div className="bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10">
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row md:h-64">
                             {/* Imagen del producto */}
-                            <div className="md:w-1/4 relative overflow-hidden cursor-pointer" onClick={() => onProductClick(product)}>
-                                <div className="aspect-square bg-gradient-to-br from-[#2c1b29] to-[#1a1018] relative">
+                            <div className="md:w-1/3 relative overflow-hidden cursor-pointer" onClick={() => onProductClick(product)}>
+                                <div className="h-full md:aspect-auto aspect-square bg-gradient-to-br from-[#2c1b29] to-[#1a1018] relative">
                                     <img
                                         src={product.image}
                                         alt={product.name}
@@ -57,7 +57,7 @@ const ProductList = ({ products, onProductClick, formatPrice }) => {
                             </div>
 
                             {/* Información del producto */}
-                            <div className="md:w-2/3 p-6">
+                            <div className="md:w-2/3 p-6 flex-1">
                                 <div className="flex flex-col h-full">
                                     {/* Header */}
                                     <div className="mb-4">

@@ -61,7 +61,7 @@ const TestimonialCard = ({ testimonial }) => {
     const initials = testimonial.name.split(' ').map(n => n[0]).join('');
 
     return (
-        <div className="relative w-72 md:h-84 2xl:h-84 rounded-2xl overflow-hidden shadow-2xl -mt-16 group hover:scale-105 transition-transform duration-300">
+        <div className="relative w-72 md:h-84 2xl:h-84 rounded-2xl overflow-hidden shadow-2xl md:-mt-20 2xl:-mt-16 group hover:scale-105 transition-transform duration-300">
             {/* Fondo con gradiente */}
             <div className="absolute inset-0 bg-gradient-to-br from-white via-purple-50 to-pink-50 opacity-90"></div>
 
@@ -120,7 +120,7 @@ const TestimonialCard = ({ testimonial }) => {
 const Testimonials = () => {
     return (
         <div className="bg-gradient-to-b from-[#93959c] to-[#050404] py-8">
-            <div className="flex md:gap-8 2xl:gap-10 justify-center md:scale-90 2xl:scale-100">
+            <div className="flex md:gap-5 2xl:gap-10 justify-center md:scale-90 2xl:scale-100">
                 {testimonials.map((testimonial, index) => (
                     <TestimonialCard key={index} testimonial={testimonial} />
                 ))}

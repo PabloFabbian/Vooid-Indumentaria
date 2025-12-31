@@ -52,7 +52,7 @@ const HeroHeaderSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/30" />
       </div>
 
-      <div className="container mx-auto px-4 md:-mt-14 2xl:-mt-10 relative z-10">
+      <div className="container mx-auto px-4 md:-mt-0 2xl:-mt-10 relative z-10">
         <div className="mb-16 flex flex-col items-center text-center md:mb-0">
           {/* Título - Más profesional */}
           <motion.h1
@@ -62,7 +62,7 @@ const HeroHeaderSection = () => {
             variants={fadeInVariant}
           >
             <span className="block">COLECCIÓN INVIERNO 2025</span>
-            <span className="block text-xl font-light tracking-widest text-white/80 mt-4">
+            <span className="block text-xl font-light tracking-widest text-white/80 md:mt-1 2xl:mt-4">
               INDUMENTARIA OVERSIZE PREMIUM
             </span>
           </motion.h1>
@@ -90,7 +90,7 @@ const HeroHeaderSection = () => {
             animate="visible"
             variants={fadeInDelayedVariant}
           >
-            <span className="block mb-2">Diseños exclusivos en colaboración con artistas urbanos.</span>
+            <span className="block md:mb-0 2xl:mb-2">Diseños exclusivos en colaboración con artistas urbanos.</span>
             <span className="block text-white/90">
               Materiales técnicos • Garantía de calidad • Edición limitada
             </span>
@@ -105,7 +105,7 @@ const HeroHeaderSection = () => {
           >
             {/* Botón Shop - Estilo premium */}
             <motion.button
-              className="group inline-flex items-center bg-white text-black rounded-lg border-0 text-lg font-semibold transition-all duration-300 px-8 py-3 hover:bg-gray-100"
+              className="group inline-flex items-center bg-white text-black rounded-lg border-0 md:text-base 2xl:text-lg font-semibold transition-all duration-300 px-8 py-3 hover:bg-gray-100"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -123,7 +123,7 @@ const HeroHeaderSection = () => {
 
             {/* Botón Conocer - Borde elegante */}
             <motion.button
-              className="group inline-flex items-center bg-transparent rounded-lg border border-white/40 text-lg font-semibold text-white transition-all duration-300 px-8 py-3 hover:bg-white/10 hover:border-white"
+              className="group inline-flex items-center bg-transparent rounded-lg border border-white/40 md:text-base 2xl:text-lg font-semibold text-white transition-all duration-300 px-8 py-3 hover:bg-white/10 hover:border-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
