@@ -329,6 +329,69 @@ export const productsData = [
                 "Secado en 30 minutos"
             ]
         }
+    },
+    {
+        id: 16,
+        image: "/Design16.png",
+        type: "Gorro",
+        name: "Ribbed Winter Beanie",
+        price: 24500,
+        availability: "En Stock",
+        color: "Gris Oscuro",
+        category: "Gorro",
+        details: {
+            title: "Ribbed Winter Beanie",
+            description: [
+                "Tejido de punto acrílico premium",
+                "Doble capa para mayor calidez",
+                "Etiqueta frontal tejida en alta definición",
+                "Calce ajustable 'slouchy' o con doblez",
+                "Talla única de alta elasticidad",
+                "Ideal para bajas temperaturas"
+            ]
+        }
+    },
+    {
+        id: 17,
+        image: "/Design17.png",
+        type: "Short",
+        name: "Utility Cargo Shorts",
+        price: 52000,
+        availability: "En Stock",
+        color: "Verde Oliva",
+        category: "Short",
+        details: {
+            title: "Utility Cargo Shorts",
+            description: [
+                "Gabardina de algodón reforzada",
+                "6 bolsillos funcionales",
+                "Costuras triples de seguridad",
+                "Cintura con cordón técnico ajustable",
+                "Largo por encima de la rodilla",
+                "Estilo urbano militar"
+            ]
+        }
+    },
+    {
+        id: 18,
+        image: "/Design18.png",
+        type: "Accesorio",
+        name: "Tactical Velcro Wallet",
+        price: 18500,
+        availability: "En Stock",
+        color: "Negro",
+        category: "Accesorio",
+        details: {
+            title: "Tactical Velcro Wallet",
+            description: [
+                "Cordura 1000D de alta resistencia",
+                "Cierre de velcro reforzado",
+                "Compartimento para billetes y monedas",
+                "Capacidad para 6 tarjetas",
+                "Anillo en D para enganche de llaves",
+                "Diseño compacto y duradero"
+            ]
+        }
     }
 ];
 
