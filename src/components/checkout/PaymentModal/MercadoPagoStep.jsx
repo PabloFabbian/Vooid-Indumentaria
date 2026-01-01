@@ -1,4 +1,3 @@
-// src/components/checkout/PaymentModal/MercadoPagoStep.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
@@ -34,7 +33,12 @@ const MercadoPagoStep = ({ onClose, onBack, orderData }) => {
             id: 'card',
             title: 'Tarjeta de Crédito/Débito',
             description: 'Visa, Mastercard, Amex',
-            icon: '💳',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="2" y="5" width="20" height="14" rx="2" strokeWidth="2" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2 10h20" />
+                </svg>
+            ),
             badge: 'Rápido',
             color: 'from-green-500/20 to-green-500/5',
             borderColor: 'border-green-500/30'
@@ -43,7 +47,12 @@ const MercadoPagoStep = ({ onClose, onBack, orderData }) => {
             id: 'installments',
             title: 'Hasta 12 Cuotas',
             description: 'Sin interés con bancos seleccionados',
-            icon: '📅',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" strokeWidth="2" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+            ),
             badge: 'Popular',
             color: 'from-blue-500/20 to-blue-500/5',
             borderColor: 'border-blue-500/30'
@@ -52,10 +61,53 @@ const MercadoPagoStep = ({ onClose, onBack, orderData }) => {
             id: 'wallet',
             title: 'Mercado Pago',
             description: 'Pago desde tu cuenta',
-            icon: '👛',
+            icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+            ),
             badge: 'Sin comisión',
             color: 'from-purple-500/20 to-purple-500/5',
             borderColor: 'border-purple-500/30'
+        }
+    ];
+
+    const benefits = [
+        {
+            icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            ),
+            text: 'Inmediato',
+            color: 'text-green-400'
+        },
+        {
+            icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            ),
+            text: 'Seguro',
+            color: 'text-blue-400'
+        },
+        {
+            icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            ),
+            text: 'Protegido',
+            color: 'text-purple-400'
+        },
+        {
+            icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+            ),
+            text: 'App móvil',
+            color: 'text-cyan-400'
         }
     ];
 
@@ -83,7 +135,9 @@ const MercadoPagoStep = ({ onClose, onBack, orderData }) => {
                                 onClick={onBack}
                                 className="w-8 h-8 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/5 transition-colors"
                             >
-                                ←
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                                </svg>
                             </button>
                             <div>
                                 <h2 className="text-xl font-bold text-white">Mercado Pago</h2>
@@ -94,7 +148,9 @@ const MercadoPagoStep = ({ onClose, onBack, orderData }) => {
                             onClick={onClose}
                             className="w-8 h-8 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/5 transition-colors"
                         >
-                            ✕
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -131,7 +187,9 @@ const MercadoPagoStep = ({ onClose, onBack, orderData }) => {
                                 >
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-3">
-                                            <span className="text-2xl">{option.icon}</span>
+                                            <div className="text-white/60">
+                                                {option.icon}
+                                            </div>
                                             <div>
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <h4 className="text-white font-medium">{option.title}</h4>
@@ -162,14 +220,11 @@ const MercadoPagoStep = ({ onClose, onBack, orderData }) => {
                     <div className="mb-6">
                         <h3 className="text-white font-bold mb-3">Beneficios de pagar con Mercado Pago</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                            {[
-                                { icon: '⚡', text: 'Inmediato', color: 'text-green-400' },
-                                { icon: '🔒', text: 'Seguro', color: 'text-blue-400' },
-                                { icon: '🛡️', text: 'Protegido', color: 'text-purple-400' },
-                                { icon: '📱', text: 'App móvil', color: 'text-cyan-400' }
-                            ].map((item, index) => (
-                                <div key={index} className="flex flex-col items-center p-3 bg-white/5 border border-white/10">
-                                    <span className="text-xl mb-1">{item.icon}</span>
+                            {benefits.map((item, index) => (
+                                <div key={index} className="flex flex-col items-center gap-2 p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
+                                    <div className={item.color}>
+                                        {item.icon}
+                                    </div>
                                     <span className={`text-xs font-medium ${item.color}`}>
                                         {item.text}
                                     </span>
@@ -212,32 +267,35 @@ const MercadoPagoStep = ({ onClose, onBack, orderData }) => {
                         </button>
                         <button
                             onClick={onBack}
-                            className="w-full py-3 border border-white/30 text-white hover:bg-white/5 transition-all duration-300"
+                            className="w-full py-3 border border-white/30 text-white hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2"
                         >
-                            ← Volver a métodos de pago
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Volver a métodos de pago
                         </button>
                     </div>
 
                     {/* Logos de seguridad */}
                     <div className="mt-6 pt-6 border-t border-white/10">
                         <div className="flex items-center justify-center gap-4">
-                            <div className="flex flex-col items-center">
-                                <svg className="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            <div className="flex flex-col items-center p-2">
+                                <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                 </svg>
-                                <span className="text-[8px] text-white/50 mt-1">SSL</span>
+                                <span className="text-[8px] text-white/50 mt-1 font-medium">SSL</span>
                             </div>
-                            <div className="flex flex-col items-center">
-                                <svg className="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+                            <div className="flex flex-col items-center p-2">
+                                <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
-                                <span className="text-[8px] text-white/50 mt-1">Secure</span>
+                                <span className="text-[8px] text-white/50 mt-1 font-medium">Secure</span>
                             </div>
-                            <div className="flex flex-col items-center">
-                                <svg className="w-8 h-8 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 15c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 13c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            <div className="flex flex-col items-center p-2">
+                                <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span className="text-[8px] text-white/50 mt-1">Verified</span>
+                                <span className="text-[8px] text-white/50 mt-1 font-medium">Verified</span>
                             </div>
                         </div>
                     </div>
