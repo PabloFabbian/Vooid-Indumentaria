@@ -72,25 +72,27 @@ const CartDrawer = () => {
                         )}
                     </div>
 
-                    {/* Footer - Solo mostrar si hay items */}
-                    {cartItems.length > 0 && (
-                        <div className="p-6 border-t border-white/10 space-y-4">
-                            <div className="space-y-2">
-                                <div className="flex justify-between text-white/70">
-                                    <span>Subtotal</span>
-                                    <span>{formatPrice(getCartTotal())}</span>
+                    {/* Footer - SIEMPRE VISIBLE (incluso con carrito vacío) */}
+                    <div className="p-6 border-t border-white/10 space-y-4">
+                        {/* Mostrar resumen solo si hay items */}
+                        {cartItems.length > 0 ? (
+                            <>
+                                <div className="space-y-2">
+                                    <div className="flex justify-between text-white/70">
+                                        <span>Subtotal</span>
+                                        <span>{formatPrice(getCartTotal())}</span>
+                                    </div>
+                                    <div className="flex justify-between text-white/70">
+                                        <span>Envío</span>
+                                        <span>{shippingCost === 0 ? 'Gratis' : formatPrice(shippingCost)}</span>
+                                    </div>
+                                    <div className="flex justify-between text-white font-bold pt-2 border-t border-white/10">
+                                        <span>Total</span>
+                                        <span>{formatPrice(total)}</span>
+                                    </div>
                                 </div>
-                                <div className="flex justify-between text-white/70">
-                                    <span>Envío</span>
-                                    <span>{shippingCost === 0 ? 'Gratis' : formatPrice(shippingCost)}</span>
-                                </div>
-                                <div className="flex justify-between text-white font-bold pt-2 border-t border-white/10">
-                                    <span>Total</span>
-                                    <span>{formatPrice(total)}</span>
-                                </div>
-                            </div>
 
-                            <div className="space-y-3">
+                                {/* Botón "Proceder al pago" solo si hay items */}
                                 <Link
                                     to="/checkout"
                                     onClick={closeCart}
@@ -98,26 +100,60 @@ const CartDrawer = () => {
                                 >
                                     Proceder al pago
                                 </Link>
-
-                                <div className="flex gap-3">
-                                    <Link
-                                        to="/cart"
-                                        onClick={closeCart}
-                                        className="flex-1 py-3 bg-transparent border border-white/30 text-white font-medium rounded-lg text-center hover:bg-white/5 transition-colors"
-                                    >
-                                        Ver carrito completo
-                                    </Link>
-
-                                    <button
-                                        onClick={clearCart}
-                                        className="flex-1 py-3 bg-transparent border border-white/30 text-white font-medium rounded-lg hover:bg-white/5 transition-colors"
-                                    >
-                                        Vaciar
-                                    </button>
-                                </div>
+                            </>
+                        ) : (
+                            // Mensaje cuando el carrito está vacío
+                            <div className="text-center py-2">
+                                <p className="text-white/60 text-sm mb-4">Agregá productos para proceder al pago</p>
                             </div>
-                        </div>
-                    )}
+                        )}
+
+                        {/* Botón "Ver mis pedidos" - SIEMPRE VISIBLE */}
+                        <Link
+                            to="/orders"
+                            onClick={closeCart}
+                            className="block w-full py-3 bg-transparent border border-white/30 text-white font-medium rounded-lg text-center hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                            Ver mis pedidos
+                        </Link>
+
+                        {/* Botones inferiores solo si hay items */}
+                        {cartItems.length > 0 && (
+                            <div className="flex gap-3">
+                                <Link
+                                    to="/cart"
+                                    onClick={closeCart}
+                                    className="flex-1 py-3 bg-transparent border border-white/30 text-white font-medium rounded-lg text-center hover:bg-white/5 transition-colors"
+                                >
+                                    Ver carrito completo
+                                </Link>
+
+                                <button
+                                    onClick={clearCart}
+                                    className="flex-1 py-3 bg-transparent border border-white/30 text-white font-medium rounded-lg hover:bg-white/5 transition-colors"
+                                >
+                                    Vaciar
+                                </button>
+                            </div>
+                        )}
+
+                        {/* Botón "Seguir comprando" cuando el carrito está vacío */}
+                        {cartItems.length === 0 && (
+                            <Link
+                                to="/products"
+                                onClick={closeCart}
+                                className="block w-full py-3 bg-white/10 border border-white/20 text-white font-medium rounded-lg text-center hover:bg-white/20 transition-colors flex items-center justify-center gap-2"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                Seguir comprando
+                            </Link>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

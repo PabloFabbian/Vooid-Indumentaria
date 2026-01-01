@@ -18,6 +18,7 @@ import ProductsPage from "./components/shop/VooidShop";
 import CartPage from "./components/cart/CartPage";
 import CheckoutPage from "./components/checkout/CheckoutPage";
 import PaymentSuccessPage from "./components/checkout/PaymentSuccessPage";
+import OrdersPage from "./components/checkout/Orders/OrdersPage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/payment/success" element={<PaymentSuccessPage />} />
+              <Route path="/orders" element={<OrdersPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
           </main>

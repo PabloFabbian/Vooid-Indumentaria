@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Toaster } from 'sonner';
 import { formatCurrency, copyToClipboard, bankAccounts, generateOrderNumber, showSuccess } from './PaymentUtils';
+import { saveOrder, createOrder } from '../../../services/orderService';
 
 const TransferStep = ({ onClose, onBack, orderData }) => {
     const [orderConfirmed, setOrderConfirmed] = useState(false);
-    const [orderNumber] = useState(generateOrderNumber());
+    const [orderNumber, setOrderNumber] = useState(generateOrderNumber());
+    const [savedOrder, setSavedOrder] = useState(null);
 
     const handleBackgroundClick = (e) => {
         if (e.target.id === 'transfer-modal-bg') {
@@ -14,6 +16,19 @@ const TransferStep = ({ onClose, onBack, orderData }) => {
     };
 
     const handleConfirmOrder = () => {
+        // Crear y guardar el pedido
+        const order = createOrder({
+            ...orderData,
+            items: orderData.items || [],
+            subtotal: orderData.subtotal || 0,
+            shipping: orderData.shipping || 0,
+            total: orderData.total || 0
+        }, 'transfer');
+
+        const saved = saveOrder(order);
+        setSavedOrder(saved);
+        setOrderNumber(saved.id);
+
         showSuccess('¡Pedido registrado como pendiente de pago!');
         setOrderConfirmed(true);
     };
@@ -285,7 +300,9 @@ const TransferStep = ({ onClose, onBack, orderData }) => {
                                             </div>
                                             <div className="flex justify-between">
                                                 <span className="text-white/60">Fecha:</span>
-                                                <span className="text-white">{new Date().toLocaleDateString('es-AR')}</span>
+                                                <span className="text-white">
+                                                    {savedOrder ? new Date(savedOrder.date).toLocaleDateString('es-AR') : new Date().toLocaleDateString('es-AR')}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -323,7 +340,11 @@ const TransferStep = ({ onClose, onBack, orderData }) => {
                                     {/* Botones finales */}
                                     <div className="space-y-3">
                                         <button
-                                            onClick={() => window.location.href = '/orders'}
+                                            onClick={() => {
+                                                onClose();
+                                                // Navegar a la página de pedidos
+                                                window.location.href = '/orders';
+                                            }}
                                             className="w-full py-3 bg-white text-[#2e1c2b] font-bold hover:bg-gray-100 transition-all duration-300"
                                         >
                                             Ver mis pedidos
