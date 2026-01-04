@@ -15,6 +15,7 @@ import ScrollToTop from "./components/common/ScrollToTop";
 // Pages
 import HomePage from "./components/home/HomePage";
 import ProductsPage from "./components/shop/VooidShop";
+import ShopInfoPage from './components/shop/ShopInfoPage';
 import CartPage from "./components/cart/CartPage";
 import CheckoutPage from "./components/checkout/CheckoutPage";
 import PaymentSuccessPage from "./components/checkout/PaymentSuccessPage";
@@ -32,6 +33,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/info/:section" element={<ShopInfoPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/payment/success" element={<PaymentSuccessPage />} />
               <Route path="/orders" element={<OrdersPage />} />

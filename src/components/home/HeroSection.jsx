@@ -1,25 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import "../../styles/globals.css";
 
 const HeroHeaderSection = () => {
-  const parallaxRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const yPos = window.scrollY;
-      const parallaxSpeed = 0.12;
-      if (parallaxRef.current) {
-        parallaxRef.current.style.transform = `translateY(${yPos * parallaxSpeed}px)`;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const fadeInVariant = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
@@ -52,7 +34,7 @@ const HeroHeaderSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/30" />
       </div>
 
-      <div className="container mx-auto px-4 md:-mt-0 2xl:-mt-10 relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="mb-16 flex flex-col items-center text-center md:mb-0">
           {/* Título - Más profesional */}
           <motion.h1
@@ -67,9 +49,8 @@ const HeroHeaderSection = () => {
             </span>
           </motion.h1>
 
-          {/* Logo con efecto de paralaje mejorado */}
+          {/* Logo centrado sin parallax */}
           <motion.div
-            ref={parallaxRef}
             className="relative my-8"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -79,7 +60,7 @@ const HeroHeaderSection = () => {
             <img
               src="/Vooid-logo.png"
               alt="Vooid Logo"
-              className="relative h-48 w-auto 2xl:h-64 filter brightness-110 contrast-110"
+              className="relative h-48 w-auto 2xl:h-64 filter brightness-110 contrast-110 md:-mt-6 2xl:-mt-4"
             />
           </motion.div>
 

@@ -8,7 +8,7 @@ const contactInfoData = [
 
 function ContactInfo() {
   return (
-    <section className="bg-gradient-to-b from-[#110911] to-black body-font border-t border-white/10">
+    <section className="bg-gradient-to-b from-[#110911] to-black body-font border-t border-white/10" id="contact">
       <div className="container mx-auto px-5 py-16 w-[90%]">
         {/* Header */}
         <div className="text-center mb-12">

@@ -48,7 +48,7 @@ const ShopDropdown = () => {
                     <AnimatePresence>
                         {isShopOpen && (
                             <NavigationMenu.Content
-                                className="absolute md:-left-[22rem] 2xl:-left-[21.5rem] md:top-12 2xl:top-16 w-full rounded-lg bg-black hover:cursor-pointer sm:w-auto"
+                                className="absolute md:-left-[22rem] 2xl:-left-[21.5rem] md:top-12 2xl:top-16 w-full rounded-lg bg-[#0a0908] hover:cursor-pointer sm:w-auto"
                                 onPointerEnter={handleShopPointerEnter}
                                 onPointerLeave={handleShopPointerLeave}
                                 asChild
@@ -60,10 +60,10 @@ const ShopDropdown = () => {
                                     transition={{ duration: 0.25, ease: "easeOut" }}
                                     className="rounded-lg"
                                 >
-                                    <ul className="m-0 grid list-none gap-x-[10px] bg-black p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
+                                    <ul className="m-0 grid list-none gap-x-[10px] bg-[#0a0908] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
                                         <li className="row-span-3 grid duration-300 hover:scale-105 hover:cursor-pointer">
                                             <a
-                                                className="flex h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b from-black to-indigo-900 p-[25px] text-white no-underline outline-none transition-shadow focus:shadow-violet7 hover:shadow-lg hover:shadow-indigo-900/30"
+                                                className="flex h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b from-black to-[#2e1c2b] p-[25px] text-white no-underline outline-none transition-shadow focus:shadow-violet7 hover:shadow-lg hover:shadow-pink-400/10"
                                                 onClick={() => navigate("/products")}
                                             >
                                                 <img
@@ -83,15 +83,14 @@ const ShopDropdown = () => {
                                                 </p>
                                             </a>
                                         </li>
-                                        <ListItem href="#" title="Como Comprar">
+                                        <ListItem onClick={() => navigate("/info/como-comprar")} title="Como Comprar">
                                             Explora el cómo realizar compras rápidas y seguras aquí.
                                         </ListItem>
-                                        <ListItem href="#" title="Guía de Talles">
+                                        <ListItem onClick={() => navigate("/info/guia-talles")} title="Guía de Talles">
                                             Conoce nuestra guía para encontrar tus medidas ideales.
                                         </ListItem>
-                                        <ListItem href="#" title="Preguntas Frecuentes">
-                                            Encuentra soluciones a preguntas frecuentes sobre nuestros
-                                            productos.
+                                        <ListItem onClick={() => navigate("/info/faq")} title="Preguntas Frecuentes">
+                                            Encuentra soluciones a preguntas frecuentes sobre nuestros productos.
                                         </ListItem>
                                     </ul>
                                 </motion.div>
