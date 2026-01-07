@@ -95,7 +95,7 @@ const ProductModal = ({ product, onClose, onAddToCart, isExiting }) => {
             )}
 
             <div
-                className={`relative bg-gradient-to-b from-[#2d1b2a] to-[#110911] backdrop-blur-xl rounded-lg max-w-4xl w-full shadow-2xl border border-white/10 overflow-hidden my-8 ${isExiting ? 'animate-modalToCartTransform' : 'animate-scaleIn'}`}
+                className={`md:[zoom:0.85] 2xl:[zoom:1] relative bg-gradient-to-b from-[#2d1b2a] to-[#110911] backdrop-blur-xl rounded-lg max-w-4xl w-full shadow-2xl border border-white/10 overflow-hidden my-8 ${isExiting ? 'animate-modalToCartTransform' : 'animate-scaleIn'}`}
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-transparent pointer-events-none"></div>

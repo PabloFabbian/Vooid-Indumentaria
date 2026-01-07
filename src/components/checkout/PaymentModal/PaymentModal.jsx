@@ -114,7 +114,7 @@ const PaymentModal = ({ isOpen, onClose, orderData }) => {
     return (
         <div
             id="payment-modal-background"
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md animate-fadeIn p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md animate-fadeIn p-4 md:[zoom:0.9] 2xl:[zoom:1]"
             onClick={handleBackgroundClick}
         >
             <div

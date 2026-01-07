@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CartNotification = ({ product, onBuyNow, onContinueShopping, onClose, formatPrice, cartItemsCount }) => {
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center md:[zoom:0.8] 2xl:[zoom:1]">
             {/* Fondo con blur */}
             <div
                 className="absolute inset-0 bg-black/75 backdrop-blur-sm animate-fadeIn"

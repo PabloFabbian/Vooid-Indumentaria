@@ -174,7 +174,7 @@ const VooidShop = () => {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-10">
+      <div className="relative z-10 md:[zoom:0.8] 2xl:[zoom:1]">
         <div className="relative mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 w-[90%]">
           <header className="mb-12">
             <div className="inline-block mb-4">
