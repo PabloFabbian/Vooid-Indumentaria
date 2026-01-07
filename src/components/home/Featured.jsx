@@ -3,16 +3,16 @@ import React from "react";
 function Featured() {
   return (
     <section className="bg-gradient-to-b from-[#050404] via-[#1a0f1a] to-[#2e1c2b] body-font text-gray-400">
-      <div className="container mx-auto px-5 pb-0 pt-12 md:py-12 w-[90%]">
+      <div className="container mx-auto px-5 pb-0 md:pb-12 2xl:py-12 w-[90%]">
         <div className="mb-14 flex w-full flex-col text-center">
-          <div className="inline-block mb-4">
+          <div className="inline-block md:mb-6 2xl:mb-4">
             <div className="px-4 py-1 bg-white/5 backdrop-blur-sm border border-white/20">
               <span className="text-xs font-semibold tracking-widest text-gray-300 uppercase">
                 Experiencia Vooid
               </span>
             </div>
           </div>
-          <h1 className="mb-2 text-4xl font-bold tracking-tight text-white">
+          <h1 className="mb-2 md:text-3xl 2xl:text-4xl font-bold tracking-tight text-white">
             CALIDAD Y VARIEDAD
             <br />
             <span className="text-white/80">EN LA INDUMENTARIA VOOID</span>
