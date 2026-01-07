@@ -19,22 +19,22 @@ const HeroHeaderSection = () => {
 
   return (
     <div className="relative flex h-dvh items-center">
-      {/* Video de fondo con overlay sutil */}
-      <div className="absolute top-0 left-0 h-full w-full">
+      {/* Contenedor del video SEPARADO */}
+      <div className="absolute top-0 left-0 h-full w-full overflow-hidden z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute top-0 left-0 h-full w-full object-cover"
+          className="absolute top-0 left-0 h-full w-full object-cover brightness-[0.8]"
         >
           <source src="./snow-bg.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/30" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      {/* Contenido principal - ESTE ESTÁ ENCIMA DEL OVERLAY */}
+      <div className="container mx-auto px-4 md:-mt-0 2xl:-mt-10 relative z-10">
         <div className="mb-16 flex flex-col items-center text-center md:mb-0">
           {/* Título - Más profesional */}
           <motion.h1
@@ -51,16 +51,16 @@ const HeroHeaderSection = () => {
 
           {/* Logo centrado sin parallax */}
           <motion.div
-            className="relative my-8"
+            className="relative my-8 group"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="absolute -inset-4 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-xl opacity-0 hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -inset-4 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
             <img
               src="/Vooid-logo.png"
               alt="Vooid Logo"
-              className="relative h-48 w-auto 2xl:h-64 filter brightness-110 contrast-110 md:-mt-6 2xl:-mt-4"
+              className="relative h-48 w-auto 2xl:h-64 filter brightness-110 contrast-110"
             />
           </motion.div>
 

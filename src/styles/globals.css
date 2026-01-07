@@ -13,69 +13,141 @@ body {
   overflow-x: hidden;
 }
 
+/* SCROLLBAR MEJORADA - Más fácil de agarrar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 14px;
   background-color: #0a0a0a;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #0a0a0a;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #2d1b2a 0%, #1a1a1a 100%);
-  border: 2px solid #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #3d2b3a 0%, #2a2a2a 100%);
-}
-
-@media (max-width: 768px) {
-  ::-webkit-scrollbar {
-    width: 0;
-  }
-
-  body {
-    scrollbar-width: none;
-  }
-}
-
-input,
-select,
-textarea {
-  background-color: transparent;
-  color: white;
-}
-
-/* Scrollbar personalizada para navegadores Webkit (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-  width: 12px;
-  background-color: #0a0a0a;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #0a0a0a;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #2d1b2a 0%, #1a1a1a 100%);
-  border: 2px solid #0a0a0a;
-  border-radius: 0;
   transition: all 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #3d2b3a 0%, #2a2a2a 100%);
-  border-color: rgba(255, 255, 255, 0.1);
+/* Cuando se hace hover sobre el área de la scrollbar */
+::-webkit-scrollbar:hover {
+  width: 16px;
+  background-color: #111;
 }
 
-/* Soporte para Firefox */
+::-webkit-scrollbar-track {
+  background-color: #0a0a0a;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Track hover effect */
+::-webkit-scrollbar-track:hover {
+  background-color: #111;
+  border-left-color: rgba(255, 255, 255, 0.1);
+}
+
+/* THUMB (el indicador que se mueve) - Mejorado para fácil agarre */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3a2b38 0%, #2a1b28 100%);
+  border: 2px solid #0a0a0a;
+  border-radius: 8px;
+  min-height: 40px;
+  /* Tamaño mínimo para fácil agarre */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Efecto al hacer hover sobre el thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4d3b4b 0%, #3d2b3b 100%);
+  border-color: rgba(100, 255, 218, 0.3);
+  /* Color teal para destacar */
+  border-width: 3px;
+  transform: scale(1.05);
+  box-shadow:
+    0 0 10px rgba(100, 255, 218, 0.2),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Efecto cuando el thumb está activo (siendo arrastrado) */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #5d4b5b 0%, #4d3b4b 100%);
+  border-color: rgba(100, 255, 218, 0.5);
+  box-shadow:
+    0 0 15px rgba(100, 255, 218, 0.3),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Indicador visual de agarre (patrón de puntos o líneas) */
+::-webkit-scrollbar-thumb::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 20%,
+      rgba(255, 255, 255, 0.3) 80%,
+      transparent 100%);
+  border-radius: 2px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+/* El indicador se hace más visible en hover */
+::-webkit-scrollbar-thumb:hover::after {
+  opacity: 1;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(100, 255, 218, 0.6) 20%,
+      rgba(100, 255, 218, 0.6) 80%,
+      transparent 100%);
+}
+
+/* Estilo para el botón de scroll (flechas) */
+::-webkit-scrollbar-button {
+  display: block;
+  height: 12px;
+  background-color: #1a1a1a;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Flecha arriba */
+::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(100, 255, 218, 0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='18 15 12 9 6 15'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* Flecha abajo */
+::-webkit-scrollbar-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(100, 255, 218, 0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* Efecto hover en los botones */
+::-webkit-scrollbar-button:hover {
+  background-color: #222;
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+/* Soporte para Firefox - Versión mejorada */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #2d1b2a #0a0a0a;
+  scrollbar-color: #3a2b38 #0a0a0a;
+}
+
+/* Mejorar scrollbar de Firefox en hover */
+*:hover {
+  scrollbar-color: #4d3b4b #111;
+}
+
+/* Estilo específico para navegadores basados en Firefox */
+@supports (-moz-appearance: none) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #3a2b38 #0a0a0a;
+  }
+
+  /* Asegurar que Firefox respete el hover */
+  *:hover {
+    scrollbar-color: #4d3b4b #111;
+  }
 }
 
 /* Ocultar scrollbar en móviles para un diseño más limpio */
@@ -88,4 +160,30 @@ textarea {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
+}
+
+input,
+select,
+textarea {
+  background-color: transparent;
+  color: white;
+}
+
+/* Clase de utilidad para custom scrollbars en contenedores específicos */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #3a2b38 #0a0a0a;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #3a2b38;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4d3b4b;
 }
